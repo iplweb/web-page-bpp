@@ -6,19 +6,6 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { Phone, Mail, Headphones, Code, MessageSquare, Calendar } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Kontakt - Wsparcie komercyjne BPP",
-  description:
-    "Skontaktuj się z nami w sprawie wdrożenia systemu BPP. Profesjonalne wsparcie techniczne, instalacja, konfiguracja, szkolenia. iplweb Michał Pasternak.",
-  keywords: ["kontakt BPP", "wsparcie techniczne", "wdrożenie systemu", "instalacja BPP", "szkolenia"],
-  openGraph: {
-    title: "Kontakt - Wsparcie komercyjne BPP",
-    description: "Profesjonalne wsparcie techniczne i wdrożenie systemu Bibliografia Publikacji Pracowników",
-    url: "https://bpp.iplweb.pl/kontakt",
-  },
-}
 
 export default function ContactPage() {
   return (

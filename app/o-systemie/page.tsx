@@ -5,19 +5,6 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Server, Monitor, HardDrive, Cpu, Calendar } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "O systemie BPP - Architektura i wymagania",
-  description:
-    "System Bibliografia Publikacji Pracowników - architektura, wymagania techniczne, licencja MIT. Oprogramowanie open source dla jednostek naukowych.",
-  keywords: ["o systemie BPP", "architektura", "wymagania", "licencja MIT", "open source", "specyfikacja techniczna"],
-  openGraph: {
-    title: "O systemie BPP - Architektura i wymagania",
-    description: "Szczegółowe informacje o systemie Bibliografia Publikacji Pracowników",
-    url: "https://bpp.iplweb.pl/o-systemie",
-  },
-}
 
 export default function AboutPage() {
   return (

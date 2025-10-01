@@ -5,19 +5,6 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Github, BookOpen, ExternalLink, Code, FileText, Download, GitBranch, Package } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Kod źródłowy i dokumentacja BPP",
-  description:
-    "Pobierz kod źródłowy systemu BPP z GitHub. Dokumentacja techniczna, instrukcje instalacji Docker, integracja z PBN. Licencja MIT open source.",
-  keywords: ["kod źródłowy BPP", "GitHub", "dokumentacja", "instalacja Docker", "integracja PBN", "licencja MIT"],
-  openGraph: {
-    title: "Kod źródłowy i dokumentacja BPP",
-    description: "Zasoby dla deweloperów - kod źródłowy, dokumentacja i narzędzia instalacyjne",
-    url: "https://bpp.iplweb.pl/zrodla",
-  },
-}
 
 export default function SourcesPage() {
   const resources = [

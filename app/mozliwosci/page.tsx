@@ -16,26 +16,6 @@ import {
   Settings,
   Calendar,
 } from "lucide-react"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Możliwości systemu BPP - Funkcje i integracje",
-  description:
-    "Katalogowanie publikacji, raporty ewaluacyjne, integracja z PBN i Web of Science, automatyczna punktacja MNiSW. Pełna funkcjonalność systemu BPP.",
-  keywords: [
-    "funkcje BPP",
-    "katalogowanie publikacji",
-    "raporty",
-    "integracja PBN",
-    "punktacja MNiSW",
-    "Web of Science",
-  ],
-  openGraph: {
-    title: "Możliwości systemu BPP - Funkcje i integracje",
-    description: "Kompleksowe rozwiązanie do zarządzania dorobkiem naukowym z zaawansowanymi funkcjami",
-    url: "https://bpp.iplweb.pl/mozliwosci",
-  },
-}
 
 export default function FeaturesPage() {
   const features = [
