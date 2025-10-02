@@ -48,9 +48,9 @@ export default function SourcesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 animate-stagger">
             {resources.map((resource, index) => (
-              <Card key={index} className="h-full">
+              <Card key={index} className="h-full card-hover">
                 <CardHeader>
                   <resource.icon className="h-10 w-10 text-primary mb-3" />
                   <Badge variant="outline" className="w-fit mb-2">
@@ -73,7 +73,7 @@ export default function SourcesPage() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8 text-center">Sposób instalacji</h2>
             <div className="grid grid-cols-1 gap-8">
-              <Card>
+              <Card className="card-hover animate-fade-in">
                 <CardHeader>
                   <Code className="h-8 w-8 text-primary mb-2" />
                   <CardTitle>Instalacja z Docker</CardTitle>
@@ -113,8 +113,8 @@ export default function SourcesPage() {
               <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Pobierz niezbędne narzędzia do instalacji systemu BPP
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="hover:shadow-lg transition-shadow">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-stagger">
+                <Card className="hover:shadow-lg transition-shadow card-hover">
                   <CardHeader>
                     <Package className="h-10 w-10 text-blue-600 mb-3" />
                     <CardTitle className="text-lg">Docker</CardTitle>
@@ -129,7 +129,7 @@ export default function SourcesPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-shadow">
+                <Card className="hover:shadow-lg transition-shadow card-hover">
                   <CardHeader>
                     <GitBranch className="h-10 w-10 text-orange-600 mb-3" />
                     <CardTitle className="text-lg">Git dla Windows</CardTitle>
@@ -144,7 +144,7 @@ export default function SourcesPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="hover:shadow-lg transition-shadow">
+                <Card className="hover:shadow-lg transition-shadow card-hover">
                   <CardHeader>
                     <Package className="h-10 w-10 text-blue-500 mb-3" />
                     <CardTitle className="text-lg">Docker Hub</CardTitle>

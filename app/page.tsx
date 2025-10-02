@@ -116,8 +116,8 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-stagger">
+              <Card className="card-hover">
                 <CardHeader>
                   <BookOpen className="h-10 w-10 text-primary mb-2" />
                   <CardTitle>Katalogowanie publikacji</CardTitle>
@@ -127,7 +127,7 @@ export default function HomePage() {
                 </CardHeader>
               </Card>
 
-              <Card>
+              <Card className="card-hover">
                 <CardHeader>
                   <Users className="h-10 w-10 text-primary mb-2" />
                   <CardTitle>Zarządzanie autorami</CardTitle>
@@ -137,7 +137,7 @@ export default function HomePage() {
                 </CardHeader>
               </Card>
 
-              <Card>
+              <Card className="card-hover">
                 <CardHeader>
                   <BarChart3 className="h-10 w-10 text-primary mb-2" />
                   <CardTitle>Raporty i analizy</CardTitle>
@@ -147,7 +147,7 @@ export default function HomePage() {
                 </CardHeader>
               </Card>
 
-              <Card>
+              <Card className="card-hover">
                 <CardHeader>
                   <Database className="h-10 w-10 text-primary mb-2" />
                   <CardTitle>Integracje zewnętrzne</CardTitle>
@@ -155,7 +155,7 @@ export default function HomePage() {
                 </CardHeader>
               </Card>
 
-              <Card>
+              <Card className="card-hover">
                 <CardHeader>
                   <Globe className="h-10 w-10 text-primary mb-2" />
                   <CardTitle>Dostęp przez WWW</CardTitle>
@@ -163,7 +163,7 @@ export default function HomePage() {
                 </CardHeader>
               </Card>
 
-              <Card>
+              <Card className="card-hover">
                 <CardHeader>
                   <Shield className="h-10 w-10 text-primary mb-2" />
                   <CardTitle>Licencja MIT</CardTitle>
@@ -178,16 +178,16 @@ export default function HomePage() {
         <section className="py-20 px-4 bg-muted/20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-12">System w liczbach</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-stagger">
+              <div className="bg-card p-8 rounded-lg border card-hover">
                 <div className="text-4xl font-bold text-primary mb-2">20+</div>
                 <div className="text-muted-foreground">lat rozwoju</div>
               </div>
-              <div>
+              <div className="bg-card p-8 rounded-lg border card-hover">
                 <div className="text-4xl font-bold text-primary mb-2">MIT</div>
                 <div className="text-muted-foreground">licencja open source</div>
               </div>
-              <div>
+              <div className="bg-card p-8 rounded-lg border card-hover">
                 <div className="text-4xl font-bold text-primary mb-2">100%</div>
                 <div className="text-muted-foreground">darmowy</div>
               </div>

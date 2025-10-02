@@ -24,7 +24,7 @@ export default function WdrozeniaPage() {
 
           {/* Informacja o VPN */}
           <div className="mb-12">
-            <Card className="border-amber-200 bg-amber-50">
+            <Card className="border-amber-200 bg-amber-50 card-hover animate-fade-in">
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <Info className="h-6 w-6 text-amber-600" />
@@ -42,9 +42,9 @@ export default function WdrozeniaPage() {
           </div>
 
           {/* Przykłady wdrożeń */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-12 animate-stagger">
             {/* Uniwersytet Medyczny w Lublinie */}
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow card-hover">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-sm">
@@ -92,7 +92,7 @@ export default function WdrozeniaPage() {
             </Card>
 
             {/* Uniwersytet Przyrodniczy w Lublinie */}
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow card-hover">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-sm">
@@ -141,20 +141,20 @@ export default function WdrozeniaPage() {
           </div>
 
           {/* Statystyki */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-            <div className="text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 animate-stagger">
+            <div className="text-center bg-card p-6 rounded-lg border card-hover">
               <div className="text-3xl font-bold text-amber-600 mb-2">5+</div>
               <div className="text-sm text-gray-600">Aktywnych wdrożeń</div>
             </div>
-            <div className="text-center">
+            <div className="text-center bg-card p-6 rounded-lg border card-hover">
               <div className="text-3xl font-bold text-amber-600 mb-2">3</div>
               <div className="text-sm text-gray-600">Typów instytucji</div>
             </div>
-            <div className="text-center">
+            <div className="text-center bg-card p-6 rounded-lg border card-hover">
               <div className="text-3xl font-bold text-amber-600 mb-2">100%</div>
               <div className="text-sm text-gray-600">Zadowolonych klientów</div>
             </div>
-            <div className="text-center">
+            <div className="text-center bg-card p-6 rounded-lg border card-hover">
               <div className="text-3xl font-bold text-amber-600 mb-2">24/7</div>
               <div className="text-sm text-gray-600">Dostępność systemu</div>
             </div>

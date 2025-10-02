@@ -38,8 +38,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 animate-stagger">
+            <Card className="card-hover">
               <CardHeader>
                 <Monitor className="h-8 w-8 text-primary mb-2" />
                 <CardTitle>Wymagania klienta</CardTitle>
@@ -54,7 +54,7 @@ export default function AboutPage() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="card-hover">
               <CardHeader>
                 <Server className="h-8 w-8 text-primary mb-2" />
                 <CardTitle>Wymagania serwera</CardTitle>
@@ -82,7 +82,7 @@ export default function AboutPage() {
             </Card>
           </div>
 
-          <Card className="mb-12">
+          <Card className="mb-12 card-hover animate-fade-in">
             <CardHeader>
               <CardTitle>Architektura modularna</CardTitle>
               <CardDescription>System zbudowany w sposób modularny dla maksymalnej elastyczności</CardDescription>
@@ -111,13 +111,13 @@ export default function AboutPage() {
             </CardContent>
           </Card>
 
-          <Card className="mb-12">
+          <Card className="mb-12 card-hover animate-fade-in">
             <CardHeader>
               <CardTitle>System BPP jest systemem otwartym</CardTitle>
               <CardDescription>Integracje z krajowymi i międzynarodowymi systemami bibliograficznymi</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-6 animate-stagger">
                 <div className="flex flex-col items-center text-center space-y-3">
                   <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center">
                     <span className="text-blue-600 font-bold text-sm">PBN</span>

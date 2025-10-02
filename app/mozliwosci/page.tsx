@@ -107,9 +107,9 @@ export default function FeaturesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 animate-stagger">
             {features.map((feature, index) => (
-              <Card key={index} className="h-full">
+              <Card key={index} className="h-full card-hover">
                 <CardHeader>
                   <feature.icon className="h-10 w-10 text-primary mb-3" />
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
