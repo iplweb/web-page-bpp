@@ -51,7 +51,7 @@ export default function ContactPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-stagger">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 animate-stagger">
                   <Link
                     href="https://calendly.com/mpasternak/bpp-ewaluacja"
                     target="_blank"
@@ -77,13 +77,26 @@ export default function ContactPage() {
                   </Link>
 
                   <Link
-                    href="mailto:michal.dtz@gmail.com"
+                    href="mailto:bpp@iplweb.pl"
                     className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover hover:bg-muted/50 transition-colors"
                   >
                     <Mail className="h-8 w-8 text-primary mb-3" />
                     <div className="font-semibold mb-1">E-mail</div>
                     <div className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                      michal.dtz@gmail.com
+                      bpp@iplweb.pl
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="https://support.iplweb.pl/support/tickets/new"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover hover:bg-muted/50 transition-colors"
+                  >
+                    <Headphones className="h-8 w-8 text-primary mb-3" />
+                    <div className="font-semibold mb-1">Wsparcie techniczne</div>
+                    <div className="text-sm text-primary hover:underline">
+                      Otwórz zgłoszenie
                     </div>
                   </Link>
                 </div>
@@ -106,17 +119,19 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow card-hover">
-                <CardHeader>
-                  <Headphones className="h-8 w-8 text-primary mb-3" />
-                  <CardTitle className="text-lg">Wsparcie techniczne</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Bieżące wsparcie techniczne, rozwiązywanie problemów i pomoc w codziennym użytkowaniu systemu.
-                  </p>
-                </CardContent>
-              </Card>
+              <Link href="/wsparcie" className="hover:shadow-lg transition-shadow card-hover">
+                <Card className="h-full">
+                  <CardHeader>
+                    <Headphones className="h-8 w-8 text-primary mb-3" />
+                    <CardTitle className="text-lg">Wsparcie techniczne</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">
+                      Bieżące wsparcie techniczne, rozwiązywanie problemów i pomoc w codziennym użytkowaniu systemu.
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
 
               <Card className="hover:shadow-lg transition-shadow card-hover">
                 <CardHeader>
@@ -131,17 +146,19 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow card-hover">
-                <CardHeader>
-                  <Code className="h-8 w-8 text-primary mb-3" />
-                  <CardTitle className="text-lg">Rozwój oprogramowania</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Rozbudowa funkcjonalności, optymalizacja wydajności i dostosowanie do specyficznych wymagań.
-                  </p>
-                </CardContent>
-              </Card>
+              <Link href="https://github.com/iplweb/bpp/" target="_blank" rel="noopener noreferrer" className="hover:shadow-lg transition-shadow card-hover">
+                <Card className="h-full">
+                  <CardHeader>
+                    <Code className="h-8 w-8 text-primary mb-3" />
+                    <CardTitle className="text-lg">Rozwój oprogramowania</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">
+                      Rozbudowa funkcjonalności, optymalizacja wydajności i dostosowanie do specyficznych wymagań.
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
 
               <Card className="hover:shadow-lg transition-shadow card-hover">
                 <CardHeader>
@@ -183,7 +200,7 @@ export default function ContactPage() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="mailto:michal.dtz@gmail.com">Napisz e-mail</Link>
+                <Link href="mailto:bpp@iplweb.pl">Napisz e-mail</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link href="tel:+48793668733">Zadzwoń</Link>
