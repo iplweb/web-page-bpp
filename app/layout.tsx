@@ -29,6 +29,25 @@ export default function RootLayout({
           src="https://plausible.io/js/script.hash.outbound-links.js"
           strategy="afterInteractive"
         />
+        <Script
+          id="freshworks-settings"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.fwSettings={
+                'widget_id':205000000434
+              };
+              !function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}()
+            `,
+          }}
+        />
+        <Script
+          type="text/javascript"
+          src="https://euc-widget.freshworks.com/widgets/205000000434.js"
+          strategy="afterInteractive"
+          async
+          defer
+        />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <Preloader>
