@@ -16,6 +16,7 @@ const navigation = [
   { name: "Pobierz", href: "/zrodla" },
   { name: "Kontakt", href: "/kontakt" },
   { name: "Demo", href: "/demo" },
+  { name: "Wsparcie", href: "/wsparcie" },
 ]
 
 export function Navigation() {

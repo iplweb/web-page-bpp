@@ -52,40 +52,40 @@ export default function ContactPage() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-stagger">
-                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover">
+                  <Link
+                    href="https://calendly.com/mpasternak/bpp-ewaluacja"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover hover:bg-muted/50 transition-colors"
+                  >
                     <Calendar className="h-8 w-8 text-primary mb-3" />
                     <div className="font-semibold mb-1">Spotkanie online</div>
-                    <div className="text-sm">
-                      <Link
-                        href="https://calendly.com/mpasternak/bpp-ewaluacja"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        Umów spotkanie
-                      </Link>
+                    <div className="text-sm text-primary hover:underline">
+                      Umów spotkanie
                     </div>
-                  </div>
+                  </Link>
 
-                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover">
+                  <Link
+                    href="tel:+48793668733"
+                    className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover hover:bg-muted/50 transition-colors"
+                  >
                     <Phone className="h-8 w-8 text-primary mb-3" />
                     <div className="font-semibold mb-1">Telefon</div>
-                    <div className="text-sm text-muted-foreground">
-                      <Link href="tel:+48793668733" className="hover:text-primary transition-colors">
-                        +48 793 668 733
-                      </Link>
+                    <div className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                      +48 793 668 733
                     </div>
-                  </div>
+                  </Link>
 
-                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover">
+                  <Link
+                    href="mailto:michal.dtz@gmail.com"
+                    className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover hover:bg-muted/50 transition-colors"
+                  >
                     <Mail className="h-8 w-8 text-primary mb-3" />
                     <div className="font-semibold mb-1">E-mail</div>
-                    <div className="text-sm text-muted-foreground">
-                      <Link href="mailto:michal.dtz@gmail.com" className="hover:text-primary transition-colors">
-                        michal.dtz@gmail.com
-                      </Link>
+                    <div className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                      michal.dtz@gmail.com
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
