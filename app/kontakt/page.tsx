@@ -26,7 +26,7 @@ export default function ContactPage() {
           </div>
 
           <div className="mb-16">
-            <Card className="max-w-4xl mx-auto">
+            <Card className="max-w-4xl mx-auto card-hover animate-fade-in">
               <CardHeader className="text-center pb-6">
                 <div className="flex justify-center mb-4">
                   <Link
@@ -51,8 +51,8 @@ export default function ContactPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-stagger">
+                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover">
                     <Calendar className="h-8 w-8 text-primary mb-3" />
                     <div className="font-semibold mb-1">Spotkanie online</div>
                     <div className="text-sm">
@@ -67,7 +67,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30">
+                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover">
                     <Phone className="h-8 w-8 text-primary mb-3" />
                     <div className="font-semibold mb-1">Telefon</div>
                     <div className="text-sm text-muted-foreground">
@@ -77,7 +77,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30">
+                  <div className="flex flex-col items-center text-center p-4 rounded-lg bg-muted/30 card-hover">
                     <Mail className="h-8 w-8 text-primary mb-3" />
                     <div className="font-semibold mb-1">E-mail</div>
                     <div className="text-sm text-muted-foreground">
@@ -93,8 +93,8 @@ export default function ContactPage() {
 
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-8">Rodzaje wsparcia</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
-              <Card className="hover:shadow-lg transition-shadow">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 animate-stagger">
+              <Card className="hover:shadow-lg transition-shadow card-hover">
                 <CardHeader>
                   <Code className="h-8 w-8 text-primary mb-3" />
                   <CardTitle className="text-lg">Instalacja i konfiguracja</CardTitle>
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow card-hover">
                 <CardHeader>
                   <Headphones className="h-8 w-8 text-primary mb-3" />
                   <CardTitle className="text-lg">Wsparcie techniczne</CardTitle>
@@ -118,7 +118,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow card-hover">
                 <CardHeader>
                   <MessageSquare className="h-8 w-8 text-primary mb-3" />
                   <CardTitle className="text-lg">Szkolenia</CardTitle>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow card-hover">
                 <CardHeader>
                   <Code className="h-8 w-8 text-primary mb-3" />
                   <CardTitle className="text-lg">Rozwój oprogramowania</CardTitle>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow card-hover">
                 <CardHeader>
                   <Code className="h-8 w-8 text-primary mb-3" />
                   <CardTitle className="text-lg">Migracja danych</CardTitle>
@@ -155,7 +155,7 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="hover:shadow-lg transition-shadow card-hover">
                 <CardHeader>
                   <MessageSquare className="h-8 w-8 text-primary mb-3" />
                   <CardTitle className="text-lg">Konsultacje</CardTitle>

@@ -169,8 +169,8 @@ export default function SourcesPage() {
               połączenia.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-stagger">
+              <Card className="card-hover">
                 <CardHeader>
                   <CardTitle className="text-lg">Konfiguracja po stronie PBN</CardTitle>
                   <CardDescription>Jak uzyskać token aplikacji w systemie PBN</CardDescription>
@@ -188,7 +188,7 @@ export default function SourcesPage() {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="card-hover">
                 <CardHeader>
                   <CardTitle className="text-lg">Konfiguracja po stronie BPP</CardTitle>
                   <CardDescription>Jak skonfigurować integrację w systemie BPP</CardDescription>

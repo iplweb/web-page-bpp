@@ -44,7 +44,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="py-20 px-4 text-center bg-gradient-to-b from-background to-muted/20">
           <div className="container mx-auto max-w-4xl">
-            <div className="mb-8">
+            <div className="mb-8 animate-fade-in">
               <Image
                 src="/images/logo-bpp-large.png"
                 alt="Bibliografia Publikacji Pracowników - System zarządzania publikacjami naukowymi"
@@ -55,16 +55,16 @@ export default function HomePage() {
               />
             </div>
 
-            <Badge variant="secondary" className="mb-6">
+            <Badge variant="secondary" className="mb-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Oprogramowanie Open Source
             </Badge>
 
-            <p className="text-xl text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.3s" }}>
               Profesjonalny system informatyczny do katalogowania i zarządzania publikacjami pracowników jednostek
               naukowych. Rozwijany od kilkunastu lat. Modyfikowany pod najdrobniejsze zarządzenia Ministerstwa czy
               wahnięcia API PBNu.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <Button size="lg" asChild>
                 <Link href="/demo">Wypróbuj demo</Link>
               </Button>
@@ -73,7 +73,7 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="bg-gradient-to-br from-orange-100 to-amber-100 border-2 border-orange-300 rounded-3xl p-8 relative overflow-hidden shadow-lg">
+            <div className="bg-gradient-to-br from-orange-100 to-amber-100 border-2 border-orange-300 rounded-3xl p-8 relative overflow-hidden shadow-lg animate-scale-in" style={{ animationDelay: "0.5s" }}>
               <div className="absolute top-4 right-4 flex items-center gap-2">
                 <div className="w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center">
                   <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
@@ -109,7 +109,7 @@ export default function HomePage() {
         {/* Features Grid */}
         <section className="py-20 px-4">
           <div className="container mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-16 animate-fade-in">
               <h2 className="text-3xl font-bold mb-4">Kluczowe możliwości systemu</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Kompleksowe rozwiązanie do zarządzania dorobkiem naukowym pracowników uczelni
@@ -177,7 +177,7 @@ export default function HomePage() {
         {/* Stats Section */}
         <section className="py-20 px-4 bg-muted/20">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-12">System w liczbach</h2>
+            <h2 className="text-3xl font-bold mb-12 animate-fade-in">System w liczbach</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-stagger">
               <div className="bg-card p-8 rounded-lg border card-hover">
                 <div className="text-4xl font-bold text-primary mb-2">20+</div>
@@ -197,7 +197,7 @@ export default function HomePage() {
 
         {/* CTA Section */}
         <section className="py-20 px-4">
-          <div className="container mx-auto text-center">
+          <div className="container mx-auto text-center animate-fade-in">
             <h2 className="text-3xl font-bold mb-4">Gotowy na start?</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               Wypróbuj system w wersji demonstracyjnej lub skontaktuj się z nami w sprawie wdrożenia
