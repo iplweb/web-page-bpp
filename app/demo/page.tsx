@@ -97,7 +97,7 @@ export default function DemoPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             <div>
-              <Card className="h-full border-amber-200 bg-amber-50">
+              <Card className="h-full border-amber-200 bg-amber-50 animate-slide-in-left">
                 <CardHeader>
                   <CheckCircle className="h-10 w-10 text-amber-600 mb-3" />
                   <CardTitle className="text-2xl text-amber-900">Kwestionariusz wdrożeniowy</CardTitle>
@@ -165,7 +165,7 @@ export default function DemoPage() {
             </div>
 
             <div>
-              <Card className="h-full">
+              <Card className="h-full animate-slide-in-right">
                 <CardHeader>
                   <Building className="h-10 w-10 text-primary mb-3" />
                   <CardTitle className="text-2xl">Dedykowany serwis demo</CardTitle>
@@ -342,7 +342,7 @@ export default function DemoPage() {
                 <Link href="/kontakt">Skontaktuj się z nami</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="https://calendly.com/mpasternak" target="_blank" rel="noopener noreferrer">
+                <Link href="https://calendly.com/mpasternak/bpp-ewaluacja" target="_blank" rel="noopener noreferrer">
                   <Calendar className="mr-2 h-4 w-4" />
                   Umów spotkanie
                 </Link>
