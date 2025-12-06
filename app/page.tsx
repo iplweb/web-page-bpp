@@ -88,18 +88,16 @@ export default function HomePage() {
                 {evaluationTexts[currentTextIndex]}
               </h2>
               <p className="text-orange-700 text-lg text-center leading-relaxed">
-                Z uwagi na natłok zapytań i zamówień, informujemy, że do końca roku jesteśmy w stanie przyjąć{" "}
-                <span className="line-through text-orange-500">trzech</span>{" "}
-                <span className="line-through text-orange-500">dwóch</span>{" "}
-                <span className="font-bold text-orange-900 bg-yellow-300 px-3 py-1 rounded-full shadow-lg animate-pulse">
-                  JEDNEGO
+                Z uwagi na natłok pracy, informujemy, że{" "}
+                <span className="font-bold text-orange-900 bg-yellow-300 px-3 py-1 rounded-lg shadow-lg">
+                  do końca stycznia 2026
                 </span>{" "}
-                klienta i zapewnić mu pełny import z PBN, wizualizację i optymalizację ewaluacji.
+                nie instalujemy nowych kopii programu. Prosimy o kontakt po tej dacie.
               </p>
 
               <div className="mt-6 text-center">
                 <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg" asChild>
-                  <Link href="/kontakt">Skontaktuj się jak najszybciej!</Link>
+                  <Link href="/kontakt">Skontaktuj się po styczniu 2026</Link>
                 </Button>
               </div>
             </div>
