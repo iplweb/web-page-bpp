@@ -7,35 +7,9 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { BookOpen, Users, BarChart3, Database, Globe, Shield, Calendar } from "lucide-react"
-import { useState, useEffect } from "react"
 import Image from "next/image"
 
 export default function HomePage() {
-  const evaluationTexts = [
-    "Ewaluacja tuż-tuż – publikacje same się nie wgrają!",
-    "Last minute na punkty – bo deadline nie zna litości.",
-    "Punkty za 5 dwunasta – zdążysz, zanim zegar wybije.",
-    "Nie czekaj na cud – ewaluacja trwa do północy.",
-    "Mission: Ewaluacja – czas start, zegar tyka!",
-    "Zbieraj sloty, nie minuty – bo końcówka już goni.",
-    "Ewaluacyjny last call – wsiadasz, albo zostajesz.",
-  ]
-
-  const [currentTextIndex, setCurrentTextIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(true)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsVisible(false)
-      setTimeout(() => {
-        setCurrentTextIndex((prev) => (prev + 1) % evaluationTexts.length)
-        setIsVisible(true)
-      }, 500) // Half second for fade out
-    }, 10000) // Change every 10 seconds
-
-    return () => clearInterval(interval)
-  }, [evaluationTexts.length])
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -71,35 +45,6 @@ export default function HomePage() {
               <Button size="lg" variant="outline" asChild>
                 <Link href="/o-systemie">Dowiedz się więcej</Link>
               </Button>
-            </div>
-
-            <div className="bg-gradient-to-br from-orange-100 to-amber-100 border-2 border-orange-300 rounded-3xl p-8 relative overflow-hidden shadow-lg animate-scale-in" style={{ animationDelay: "0.5s" }}>
-              <div className="absolute top-4 right-4 flex items-center gap-2">
-                <div className="w-6 h-6 bg-orange-600 rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                </div>
-              </div>
-
-              <h2
-                className={`text-3xl font-bold text-orange-800 mb-4 text-center transition-opacity duration-500 ${
-                  isVisible ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {evaluationTexts[currentTextIndex]}
-              </h2>
-              <p className="text-orange-700 text-lg text-center leading-relaxed">
-                Z uwagi na natłok pracy, informujemy, że{" "}
-                <span className="font-bold text-orange-900 bg-yellow-300 px-3 py-1 rounded-lg shadow-lg">
-                  do końca stycznia 2026
-                </span>{" "}
-                nie instalujemy nowych kopii programu. Prosimy o kontakt po tej dacie.
-              </p>
-
-              <div className="mt-6 text-center">
-                <Button size="lg" className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg" asChild>
-                  <Link href="/kontakt">Skontaktuj się po styczniu 2026</Link>
-                </Button>
-              </div>
             </div>
           </div>
         </section>
