@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -6,6 +7,11 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { Mail, ExternalLink, Headphones, MessageCircle, Star, Clock, Users, CheckCircle } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Wsparcie - Bibliografia Publikacji Pracowników",
+  description: "Wsparcie techniczne dla użytkowników systemu BPP — portal pomocy, kontakt z zespołem i umówienie konsultacji.",
+}
 
 export default function SupportPage() {
   return (

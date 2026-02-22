@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -6,6 +7,11 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { Phone, Mail, Headphones, Code, MessageSquare, Calendar } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Kontakt - Bibliografia Publikacji Pracowników",
+  description: "Skontaktuj się z zespołem BPP — wsparcie techniczne, konsultacje wdrożeniowe i pomoc w konfiguracji systemu.",
+}
 
 export default function ContactPage() {
   return (

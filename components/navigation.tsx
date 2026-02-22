@@ -24,7 +24,7 @@ export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-3xl backdrop-saturate-150">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/90 backdrop-blur-[100px] backdrop-saturate-200">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 no-animation">
@@ -62,7 +62,7 @@ export function Navigation() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t bg-background/80 backdrop-blur-3xl backdrop-saturate-150">
+          <div className="md:hidden border-t bg-background/90 backdrop-blur-[100px] backdrop-saturate-200">
             <nav className="flex flex-col space-y-1 p-4">
               {navigation.map((item) => (
                 <Link key={item.href} href={item.href} onClick={() => setIsMobileMenuOpen(false)}>

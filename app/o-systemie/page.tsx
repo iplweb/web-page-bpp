@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -5,6 +6,11 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Server, Monitor, HardDrive, Cpu, Calendar } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "O systemie - Bibliografia Publikacji Pracowników",
+  description: "Architektura, wymagania techniczne i historia systemu BPP — open source do zarządzania dorobkiem naukowym jednostek badawczych.",
+}
 
 export default function AboutPage() {
   return (
@@ -64,7 +70,7 @@ export default function AboutPage() {
                   <div>
                     <h4 className="font-semibold text-sm mb-2">Minimalne:</h4>
                     <ul className="space-y-1 text-sm text-muted-foreground">
-                      <li>• 4 GB RAM</li>
+                      <li>• 8 GB RAM</li>
                       <li>• 30 GB przestrzeni dyskowej</li>
                       <li>• Ubuntu GNU/Linux 64-bit</li>
                     </ul>
@@ -72,7 +78,7 @@ export default function AboutPage() {
                   <div>
                     <h4 className="font-semibold text-sm mb-2">Optymalne:</h4>
                     <ul className="space-y-1 text-sm text-muted-foreground">
-                      <li>• 8-16 GB RAM</li>
+                      <li>• 12-16 GB RAM</li>
                       <li>• 64 GB przestrzeni dyskowej</li>
                       <li>• Możliwość rozdzielenia serwerów</li>
                     </ul>

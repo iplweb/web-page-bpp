@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -5,6 +6,11 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Github, BookOpen, ExternalLink, Code, FileText, Download, GitBranch, Package } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Pobierz - Bibliografia Publikacji Pracowników",
+  description: "Kod źródłowy, dokumentacja i instrukcje instalacji systemu BPP. Oprogramowanie open source dostępne na licencji MIT.",
+}
 
 export default function SourcesPage() {
   const resources = [

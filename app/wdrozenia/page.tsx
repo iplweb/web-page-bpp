@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -5,6 +6,11 @@ import { Building2, Users, Info, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+
+export const metadata: Metadata = {
+  title: "Wdrożenia - Bibliografia Publikacji Pracowników",
+  description: "Przykłady wdrożeń systemu BPP w polskich uczelniach i instytutach badawczych — uniwersytety, akademie i instytuty naukowe.",
+}
 
 export default function WdrozeniaPage() {
   return (
@@ -20,25 +26,6 @@ export default function WdrozeniaPage() {
               System Bibliografia Publikacji Pracowników jest z powodzeniem wykorzystywany w polskich instytucjach
               naukowych do zarządzania dorobkiem naukowym.
             </p>
-          </div>
-
-          {/* Informacja o VPN */}
-          <div className="mb-12">
-            <Card className="border-amber-200 bg-amber-50 card-hover animate-fade-in">
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <Info className="h-6 w-6 text-amber-600" />
-                  <CardTitle className="text-amber-900">Informacja o wdrożeniach</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-amber-800">
-                  Wielu naszych klientów korzysta z oprogramowania za VPN lub w sieciach wewnętrznych, co uniemożliwia
-                  publiczne prezentowanie pełnej listy wszystkich wdrożeń. Poniżej przedstawiamy wybrane przykłady
-                  instytucji, które zgodziły się na publiczne udostępnienie informacji o wykorzystaniu systemu BPP.
-                </p>
-              </CardContent>
-            </Card>
           </div>
 
           {/* Przykłady wdrożeń */}
@@ -138,17 +125,131 @@ export default function WdrozeniaPage() {
                 </Button>
               </CardContent>
             </Card>
+
+            {/* Akademia Pożarnicza */}
+            <Card className="hover:shadow-lg transition-shadow card-hover">
+              <CardHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-sm">
+                    <Image
+                      src="/images/logo-apoz-official.png"
+                      alt="Logo Akademia Pożarnicza"
+                      width={60}
+                      height={60}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <CardTitle className="text-amber-900">Akademia Pożarnicza</CardTitle>
+                    <CardDescription>Uczelnia służb państwowych</CardDescription>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary" className="bg-red-100 text-red-800">
+                    <Building2 className="w-3 h-3 mr-1" />
+                    Akademia
+                  </Badge>
+                  <Badge variant="secondary" className="bg-orange-100 text-orange-800">
+                    <Users className="w-3 h-3 mr-1" />
+                    Bezpieczeństwo pożarowe
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">
+                  Jedyna w Polsce uczelnia kształcąca kadry oficerskie dla Państwowej Straży Pożarnej oraz specjalistów
+                  cywilnych w zakresie bezpieczeństwa pożarowego i ochrony ludności.
+                </p>
+                <div className="space-y-2 text-sm text-gray-500 mb-4">
+                  <div>• Zarządzanie publikacjami naukowymi</div>
+                  <div>• Integracja z PBN</div>
+                  <div>• Raporty ewaluacyjne</div>
+                </div>
+                <Button asChild className="w-full">
+                  <a href="https://bpp.apoz.edu.pl" target="_blank" rel="noopener noreferrer">
+                    Odwiedź system BPP APoż
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Państwowy Instytut Weterynaryjny - PIB */}
+            <Card className="hover:shadow-lg transition-shadow card-hover">
+              <CardHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-sm">
+                    <Image
+                      src="/images/logo-piwet-official.png"
+                      alt="Logo Państwowy Instytut Weterynaryjny - PIB"
+                      width={60}
+                      height={60}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <CardTitle className="text-amber-900">PIWet-PIB w Puławach</CardTitle>
+                    <CardDescription>Instytut badawczy</CardDescription>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary" className="bg-emerald-100 text-emerald-800">
+                    <Building2 className="w-3 h-3 mr-1" />
+                    Instytut badawczy
+                  </Badge>
+                  <Badge variant="secondary" className="bg-teal-100 text-teal-800">
+                    <Users className="w-3 h-3 mr-1" />
+                    Weterynaria
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 mb-4">
+                  Państwowy Instytut Weterynaryjny — Państwowy Instytut Badawczy w Puławach. Instytut
+                  naukowo-badawczy działający od 1945 roku, posiadający status PIB od 2003 roku.
+                </p>
+                <div className="space-y-2 text-sm text-gray-500 mb-4">
+                  <div>• Katalogowanie publikacji</div>
+                  <div>• Współpraca z PBN</div>
+                  <div>• Analiza dorobku naukowego</div>
+                </div>
+                <Button asChild className="w-full">
+                  <a href="http://bpp.piwet.pulawy.pl/" target="_blank" rel="noopener noreferrer">
+                    Odwiedź system BPP PIWet
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Informacja o wdrożeniach */}
+          <div className="mb-12">
+            <Card className="border-amber-200 bg-amber-50 card-hover animate-fade-in">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <Info className="h-6 w-6 text-amber-600" />
+                  <CardTitle className="text-amber-900">Informacja o wdrożeniach</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-amber-800">
+                  Część naszych Klientów korzysta z oprogramowania za VPN lub w sieciach wewnętrznych, co uniemożliwia
+                  publiczne prezentowanie pełnej listy wszystkich wdrożeń.
+                </p>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Statystyki */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 animate-stagger">
             <div className="text-center bg-card p-6 rounded-lg border card-hover">
-              <div className="text-3xl font-bold text-amber-600 mb-2">5+</div>
+              <div className="text-3xl font-bold text-amber-600 mb-2">7+</div>
               <div className="text-sm text-gray-600">Aktywnych wdrożeń</div>
             </div>
             <div className="text-center bg-card p-6 rounded-lg border card-hover">
-              <div className="text-3xl font-bold text-amber-600 mb-2">3</div>
-              <div className="text-sm text-gray-600">Typów instytucji</div>
+              <div className="text-3xl font-bold text-amber-600 mb-2">4+</div>
+              <div className="text-sm text-gray-600">Rodzaje instytucji</div>
             </div>
             <div className="text-center bg-card p-6 rounded-lg border card-hover">
               <div className="text-3xl font-bold text-amber-600 mb-2">100%</div>

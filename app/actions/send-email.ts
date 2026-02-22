@@ -2,6 +2,14 @@
 
 import emailjs from "@emailjs/nodejs"
 
+function validateEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
+function sanitize(value: string, maxLength: number): string {
+  return value.trim().slice(0, maxLength)
+}
+
 export async function sendContactForm(formData: {
   name: string
   email: string
@@ -17,29 +25,36 @@ export async function sendContactForm(formData: {
   hasInstitutionalLogin: boolean
 }) {
   try {
+    // Walidacja wymaganych pól
+    if (!formData.name || !formData.email || !formData.institution) {
+      return { success: false, error: "Wypełnij wymagane pola: imię, email i instytucja." }
+    }
+
+    if (!validateEmail(formData.email)) {
+      return { success: false, error: "Podaj poprawny adres email." }
+    }
+
+    if (formData.name.length > 200 || formData.email.length > 254 || formData.institution.length > 300) {
+      return { success: false, error: "Przekroczono maksymalną długość pola." }
+    }
+
     const serviceId = process.env.EMAILJS_SERVICE_ID
     const templateId = process.env.EMAILJS_TEMPLATE_ID
     const publicKey = process.env.EMAILJS_PUBLIC_KEY
 
-    console.log("[v0] Environment variables check:")
-    console.log("[v0] EMAILJS_SERVICE_ID:", serviceId ? `Set (${serviceId.substring(0, 8)}...)` : "NOT SET")
-    console.log("[v0] EMAILJS_TEMPLATE_ID:", templateId ? `Set (${templateId.substring(0, 8)}...)` : "NOT SET")
-    console.log("[v0] EMAILJS_PUBLIC_KEY:", publicKey ? `Set (${publicKey.substring(0, 8)}...)` : "NOT SET")
-
     if (!serviceId || !templateId || !publicKey) {
-      console.error("[v0] Missing EmailJS environment variables")
-      return { success: false, error: "Brak konfiguracji EmailJS - sprawdź zmienne środowiskowe" }
+      return { success: false, error: "Brak konfiguracji EmailJS — skontaktuj się z administratorem." }
     }
 
     const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      institution: formData.institution,
-      position: formData.position,
-      phone: formData.phone,
-      institution_type: formData.institutionType,
-      planned_deployment: formData.plannedDeploymentDate,
-      description: formData.description,
+      from_name: sanitize(formData.name, 200),
+      from_email: sanitize(formData.email, 254),
+      institution: sanitize(formData.institution, 300),
+      position: sanitize(formData.position, 200),
+      phone: sanitize(formData.phone, 30),
+      institution_type: sanitize(formData.institutionType, 100),
+      planned_deployment: sanitize(formData.plannedDeploymentDate, 100),
+      description: sanitize(formData.description, 5000),
       has_current_system: formData.hasCurrentSystem ? "Tak" : "Nie",
       needs_migration: formData.needsMigration ? "Tak" : "Nie",
       needs_pbn_migration: formData.needsPbnMigration ? "Tak" : "Nie",
@@ -48,13 +63,13 @@ export async function sendContactForm(formData: {
 Nowe zgłoszenie demo BPP:
 
 Dane kontaktowe:
-- Imię i nazwisko: ${formData.name}
-- Email: ${formData.email}
-- Instytucja: ${formData.institution}
-- Stanowisko: ${formData.position}
-- Telefon: ${formData.phone}
-- Typ instytucji: ${formData.institutionType}
-- Planowany termin wdrożenia: ${formData.plannedDeploymentDate}
+- Imię i nazwisko: ${sanitize(formData.name, 200)}
+- Email: ${sanitize(formData.email, 254)}
+- Instytucja: ${sanitize(formData.institution, 300)}
+- Stanowisko: ${sanitize(formData.position, 200)}
+- Telefon: ${sanitize(formData.phone, 30)}
+- Typ instytucji: ${sanitize(formData.institutionType, 100)}
+- Planowany termin wdrożenia: ${sanitize(formData.plannedDeploymentDate, 100)}
 
 Dodatkowe opcje:
 - Posiada obecny system: ${formData.hasCurrentSystem ? "Tak" : "Nie"}
@@ -63,24 +78,16 @@ Dodatkowe opcje:
 - Logowanie instytucjonalne: ${formData.hasInstitutionalLogin ? "Tak" : "Nie"}
 
 Dodatkowe informacje:
-${formData.description}
+${sanitize(formData.description, 5000)}
       `,
     }
 
-    console.log("[v0] Sending email with params:", { ...templateParams, message: "[truncated]" })
-
-    const response = await emailjs.send(serviceId, templateId, templateParams, {
+    await emailjs.send(serviceId, templateId, templateParams, {
       publicKey: publicKey,
     })
 
-    console.log("[v0] EmailJS response:", response)
     return { success: true }
   } catch (error) {
-    console.error("[v0] EmailJS Error details:", {
-      message: error instanceof Error ? error.message : "Unknown error",
-      stack: error instanceof Error ? error.stack : undefined,
-      error: error,
-    })
-    return { success: false, error: `Błąd EmailJS: ${error instanceof Error ? error.message : "Nieznany błąd"}` }
+    return { success: false, error: "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później." }
   }
 }

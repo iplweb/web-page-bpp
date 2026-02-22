@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -16,6 +17,11 @@ import {
   Settings,
   Calendar,
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Możliwości - Bibliografia Publikacji Pracowników",
+  description: "Funkcje systemu BPP — katalogowanie publikacji, integracja z PBN, raporty ewaluacyjne, import danych i wiele więcej.",
+}
 
 export default function FeaturesPage() {
   const features = [
