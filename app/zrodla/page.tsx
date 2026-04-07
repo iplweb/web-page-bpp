@@ -5,7 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Github, BookOpen, ExternalLink, Code, FileText, Download, GitBranch, Package } from "lucide-react"
+import { Github, BookOpen, ExternalLink, FileText, Rocket } from "lucide-react"
+import { InstallationTabs } from "@/components/installation-tabs"
 
 export const metadata: Metadata = {
   title: "Pobierz - Bibliografia Publikacji Pracowników",
@@ -20,6 +21,13 @@ export default function SourcesPage() {
       icon: Github,
       url: "https://github.com/iplweb/bpp",
       type: "Repozytorium",
+    },
+    {
+      title: "Repozytorium wdrożeniowe",
+      description: "Orkiestracja Docker Compose z monitoringiem, backupami i automatyczną konfiguracją",
+      icon: Rocket,
+      url: "https://github.com/iplweb/bpp-deploy",
+      type: "Wdrożenie",
     },
     {
       title: "Dokumentacja techniczna",
@@ -47,124 +55,46 @@ export default function SourcesPage() {
             <Badge variant="secondary" className="mb-4">
               Pobierz
             </Badge>
-            <h1 className="text-4xl font-bold mb-6">Zasoby dla deweloperów</h1>
+            <h1 className="text-4xl font-bold mb-6">Zainstaluj system BPP</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Wszystkie niezbędne zasoby do instalacji, konfiguracji i rozwoju systemu BPP. Kod źródłowy, dokumentacja i
-              przykłady wdrożeń.
+              Wybierz swój system operacyjny i uruchom BPP w kilku prostych krokach.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 animate-stagger">
-            {resources.map((resource, index) => (
-              <Card key={index} className="h-full card-hover">
-                <CardHeader>
-                  <resource.icon className="h-10 w-10 text-primary mb-3" />
-                  <Badge variant="outline" className="w-fit mb-2">
-                    {resource.type}
-                  </Badge>
-                  <CardTitle className="text-xl">{resource.title}</CardTitle>
-                  <CardDescription>{resource.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button asChild className="w-full">
-                    <Link href={resource.url} target="_blank" rel="noopener noreferrer">
-                      Przejdź <ExternalLink className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <Card className="mb-16 animate-fade-in">
+            <CardHeader>
+              <CardTitle>Instrukcja instalacji krok po kroku</CardTitle>
+              <CardDescription>
+                Wybierz swój system operacyjny, aby zobaczyć szczegółową instrukcję
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <InstallationTabs />
+            </CardContent>
+          </Card>
 
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-center">Sposób instalacji</h2>
-            <div className="grid grid-cols-1 gap-8">
-              <Card className="card-hover animate-fade-in">
-                <CardHeader>
-                  <Code className="h-8 w-8 text-primary mb-2" />
-                  <CardTitle>Instalacja z Docker</CardTitle>
-                  <CardDescription>
-                    Na ten moment instalacja za pomocą Dockera jest jedynym wspieranym sposobem instalacji systemu
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-sm font-medium mb-2">1. Pobierz kod źródłowy:</p>
-                      <div className="bg-muted rounded-lg p-4">
-                        <code className="text-sm">git clone https://github.com/iplweb/bpp.git</code>
-                      </div>
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium mb-2">2. Uruchom system:</p>
-                      <div className="bg-muted rounded-lg p-4">
-                        <code className="text-sm">cd bpp && docker compose up -d</code>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4 mt-4">
-                    Szczegółowe instrukcje instalacji znajdziesz w dokumentacji technicznej.
-                  </p>
-                  <Button variant="outline" size="sm" asChild>
-                    <Link href="https://bpp.readthedocs.io" target="_blank">
-                      Zobacz instrukcje
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="mt-12">
-              <h3 className="text-2xl font-bold mb-6 text-center">Narzędzia instalacyjne</h3>
-              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Pobierz niezbędne narzędzia do instalacji systemu BPP
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-stagger">
-                <Card className="hover:shadow-lg transition-shadow card-hover">
+            <h2 className="text-3xl font-bold mb-8 text-center">Zasoby dla deweloperów</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-stagger">
+              {resources.map((resource, index) => (
+                <Card key={index} className="h-full card-hover">
                   <CardHeader>
-                    <Package className="h-10 w-10 text-blue-600 mb-3" />
-                    <CardTitle className="text-lg">Docker</CardTitle>
-                    <CardDescription>Platforma konteneryzacji wymagana do uruchomienia systemu</CardDescription>
+                    <resource.icon className="h-10 w-10 text-primary mb-3" />
+                    <Badge variant="outline" className="w-fit mb-2">
+                      {resource.type}
+                    </Badge>
+                    <CardTitle className="text-xl">{resource.title}</CardTitle>
+                    <CardDescription>{resource.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <Button asChild className="w-full">
-                      <Link href="https://docker.com" target="_blank" rel="noopener noreferrer">
-                        Pobierz Docker <Download className="ml-2 h-4 w-4" />
+                      <Link href={resource.url} target="_blank" rel="noopener noreferrer">
+                        Przejdź <ExternalLink className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </CardContent>
                 </Card>
-
-                <Card className="hover:shadow-lg transition-shadow card-hover">
-                  <CardHeader>
-                    <GitBranch className="h-10 w-10 text-orange-600 mb-3" />
-                    <CardTitle className="text-lg">Git dla Windows</CardTitle>
-                    <CardDescription>System kontroli wersji do pobrania kodu źródłowego</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button asChild className="w-full">
-                      <Link href="https://git-scm.com/download/win" target="_blank" rel="noopener noreferrer">
-                        Pobierz Git <Download className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="hover:shadow-lg transition-shadow card-hover">
-                  <CardHeader>
-                    <Package className="h-10 w-10 text-blue-500 mb-3" />
-                    <CardTitle className="text-lg">Docker Hub</CardTitle>
-                    <CardDescription>Gotowe obrazy kontenerów systemu BPP</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button asChild className="w-full">
-                      <Link href="https://hub.docker.com/u/iplweb" target="_blank" rel="noopener noreferrer">
-                        Zobacz obrazy <ExternalLink className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
+              ))}
             </div>
           </div>
 

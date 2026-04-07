@@ -279,6 +279,19 @@ button:active {
   animation: scaleIn 0.6s ease-out forwards;
 }
 
+/* Disable hover effects on tab triggers and links inside installation tabs */
+.installation-tabs button:hover,
+.installation-tabs button:active,
+[data-slot="tabs-trigger"]:hover,
+[data-slot="tabs-trigger"]:active {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.installation-tabs a:hover {
+  transform: none !important;
+}
+
 /* Disable animations for logo */
 .no-animation,
 .no-animation:hover,
