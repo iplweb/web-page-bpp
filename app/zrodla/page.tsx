@@ -30,10 +30,17 @@ export default function SourcesPage() {
       type: "Wdrożenie",
     },
     {
+      title: "Dokumentacja wdrożenia",
+      description: "Pełna dokumentacja bpp-deploy: konfiguracja, monitoring, backupy, architektura i rozwiązywanie problemów",
+      icon: FileText,
+      url: "https://iplweb.github.io/bpp-deploy/",
+      type: "Wdrożenie",
+    },
+    {
       title: "Dokumentacja techniczna",
       description: "Kompletna dokumentacja instalacji, konfiguracji i użytkowania",
       icon: BookOpen,
-      url: "https://bpp.readthedocs.io",
+      url: "https://iplweb.github.io/bpp/",
       type: "Dokumentacja",
     },
     {
@@ -132,7 +139,7 @@ export default function SourcesPage() {
                 <CardContent>
                   <Button asChild variant="outline" className="w-full bg-transparent">
                     <Link
-                      href="https://bpp.readthedocs.io/pl/latest/konfiguracja_pbn.html"
+                      href="https://iplweb.github.io/bpp/administrator/konfiguracja-pbn/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

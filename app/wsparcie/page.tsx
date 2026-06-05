@@ -107,7 +107,7 @@ export default function SupportPage() {
                   </Link>
 
                   <Link
-                    href="https://bpp.readthedocs.org"
+                    href="https://iplweb.github.io/bpp/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 card-hover hover:bg-muted/50 transition-colors"
@@ -115,7 +115,20 @@ export default function SupportPage() {
                     <ExternalLink className="h-6 w-6 text-primary" />
                     <div>
                       <div className="font-semibold">Dokumentacja</div>
-                      <div className="text-sm text-primary hover:underline">bpp.readthedocs.org</div>
+                      <div className="text-sm text-primary hover:underline">iplweb.github.io/bpp</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="https://iplweb.github.io/bpp-deploy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-muted/30 card-hover hover:bg-muted/50 transition-colors"
+                  >
+                    <ExternalLink className="h-6 w-6 text-primary" />
+                    <div>
+                      <div className="font-semibold">Dokumentacja wdrożenia</div>
+                      <div className="text-sm text-primary hover:underline">iplweb.github.io/bpp-deploy</div>
                     </div>
                   </Link>
 

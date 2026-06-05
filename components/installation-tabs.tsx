@@ -89,14 +89,14 @@ function CloneAndRun({ stepStart }: { stepStart: number }) {
 
       <Step number={stepStart + 2} title="Dalsze kroki">
         <p>
-          Konfiguracja hosta, certyfikaty SSL, uruchomienie usług i inne szczegóły opisane są w{" "}
+          Konfiguracja hosta, certyfikaty SSL, uruchomienie usług, monitoring i backupy opisane są w{" "}
           <Link
-            href="https://github.com/iplweb/bpp-deploy?tab=readme-ov-file#3-sprawdź-i-dostosuj-konfigurację"
+            href="https://iplweb.github.io/bpp-deploy/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary underline underline-offset-4 hover:text-primary/80"
           >
-            dokumentacji repozytorium bpp-deploy
+            pełnej dokumentacji wdrożenia bpp-deploy
           </Link>
           {" "}— tam zawsze znajdziesz najświeższą instrukcję budowania i instalacji.
         </p>

@@ -16,6 +16,9 @@ import {
   TrendingUp,
   Settings,
   Calendar,
+  Inbox,
+  Network,
+  Unlock,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -38,6 +41,17 @@ export default function FeaturesPage() {
       ],
     },
     {
+      icon: Inbox,
+      title: "Zgłaszanie i obieg prac",
+      description: "Uporządkowany proces przyjmowania publikacji do systemu",
+      details: [
+        "Pracownicy zgłaszają swoje publikacje do systemu",
+        "Wyznaczeni operatorzy weryfikują i wprowadzają dane",
+        "Spójne, ujednolicone dane bez duplikatów",
+        "Jedna praca współautorów rejestrowana tylko raz",
+      ],
+    },
+    {
       icon: FileText,
       title: "Wykazy dorobku naukowego",
       description: "Tworzenie profesjonalnych wykazów dla różnych celów",
@@ -56,8 +70,30 @@ export default function FeaturesPage() {
         "Przekazywanie danych do Polskiej Bibliografii Naukowej (PBN)",
         "Sprawozdawczość do systemu POLON (MNiSW)",
         "Import z PubMed®, Web of Science®",
+        "Import z baz CrossRef oraz repozytoriów DSpace",
         "Eksport do systemu Primo® firmy Ex Libris",
         "Wymiana danych przez protokół OAI-PMH",
+        "Import i eksport danych w formacie BibTeX",
+      ],
+    },
+    {
+      icon: Network,
+      title: "Federacje i wiele instytucji",
+      description: "Jedna instalacja dla wielu jednostek i uczelni",
+      details: [
+        "Obsługa wielu instytucji na jednej instalacji oprogramowania",
+        "Wspólna infrastruktura przy zachowaniu odrębności danych",
+        "Niższe koszty utrzymania dla grup instytucji",
+      ],
+    },
+    {
+      icon: Unlock,
+      title: "Open Access",
+      description: "Klasyfikacja i monitorowanie otwartego dostępu",
+      details: [
+        "Automatyczna klasyfikacja statusu Open Access publikacji",
+        "Monitorowanie udziału publikacji w otwartym dostępie",
+        "Wsparcie raportowania wymogów otwartej nauki",
       ],
     },
     {
