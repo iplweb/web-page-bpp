@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { BookOpen, Users, BarChart3, Download, Upload, Network, Award, Globe, Shield, Calendar } from "lucide-react"
+import { BookOpen, Users, BarChart3, Download, Upload, Network, Award, Globe, Shield, Calendar, Rocket, ArrowRight } from "lucide-react"
 import Image from "next/image"
 
 export default function HomePage() {
@@ -15,6 +15,38 @@ export default function HomePage() {
       <Navigation />
 
       <main className="flex-1">
+        {/* BPP-CRIS announcement panel */}
+        <section className="px-4 pt-6">
+          <div className="container mx-auto max-w-5xl">
+            <Link href="/bpp-cris" className="group block animate-fade-in">
+              <div className="relative overflow-hidden rounded-2xl border-2 border-orange-300/70 bg-gradient-to-r from-orange-400/50 via-orange-300/30 to-transparent px-6 py-5 shadow-sm transition-all hover:border-orange-400/80 hover:shadow-md sm:px-8 sm:py-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-start gap-4 sm:items-center">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                      <Rocket className="h-6 w-6" />
+                    </span>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h2 className="text-xl font-bold sm:text-2xl">
+                          BPP staje się <span className="text-primary">BPP-CRIS</span>
+                        </h2>
+                        <Badge variant="secondary">zapowiedź</Badge>
+                      </div>
+                      <p className="mt-1 text-sm text-muted-foreground text-pretty sm:text-base">
+                        Repozytorium, ludzie nauki, projekty i potencjał badawczy — część już działa, reszta w drodze.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="inline-flex shrink-0 items-center self-start rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-transform group-hover:scale-[1.03] sm:self-auto">
+                    Poznaj zapowiedź
+                    <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
+
         {/* Hero Section */}
         <section className="pt-20 pb-2 px-4 text-center bg-gradient-to-b from-background to-muted/20">
           <div className="container mx-auto max-w-4xl">

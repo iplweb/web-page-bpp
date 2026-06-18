@@ -12,6 +12,7 @@ const navigation = [
   { name: "Strona główna", href: "/" },
   { name: "O systemie", href: "/o-systemie" },
   { name: "Możliwości", href: "/mozliwosci" },
+  { name: "BPP-CRIS", href: "/bpp-cris" },
   { name: "Wdrożenia", href: "/wdrozenia" },
   { name: "Pobierz", href: "/zrodla" },
   { name: "Kontakt", href: "/kontakt" },
