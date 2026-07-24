@@ -90,6 +90,10 @@ const faqs = [
 ]
 
 export default function AboutPage() {
+  // Staż systemu liczony od 2004 r. — po przyimku „od" liczebnik zawsze łączy
+  // się z formą „lat", więc wystarczy sama liczba.
+  const latRozwoju = new Date().getFullYear() - 2004
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -102,8 +106,8 @@ export default function AboutPage() {
             </Badge>
             <h1 className="text-4xl font-bold mb-6">Bibliografia Publikacji Pracowników</h1>
             <p className="text-xl text-muted-foreground text-pretty">
-              System informatyczny rozwijany od kilkunastu lat, przeznaczony do katalogowania informacji o publikacjach
-              pracowników jednostek naukowych.
+              System informatyczny rozwijany od {latRozwoju} lat, przeznaczony do katalogowania informacji o
+              publikacjach pracowników jednostek naukowych.
             </p>
           </div>
 

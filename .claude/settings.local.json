@@ -11,7 +11,12 @@
       "Bash(pnpm run:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebFetch(domain:apoz.edu.pl)",
+      "WebFetch(domain:piwet.pulawy.pl)",
+      "Bash(grep:*)",
+      "Bash(git:*)",
+      "Bash(pnpx shadcn@latest:*)"
     ],
     "deny": [],
     "ask": []
