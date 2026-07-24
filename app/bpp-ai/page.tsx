@@ -136,6 +136,32 @@ const capabilities = [
 
 const examples = [
   {
+    icon: Users,
+    prompt:
+      "Przygotuj sylwetkę naukową prof. [Nazwisko] na podstawie całego dorobku w BPP: obszary badań, najważniejsze publikacje, główne czasopisma, dynamikę w czasie i pozycję autorską. Złóż to w estetyczną, gotową do druku kartę.",
+    answer:
+      "W odpowiedzi: wielostronicowy dokument z wykresem aktywności, rankingiem czasopism, siecią współpracy i uczciwą notą metodyczną — gotowy do wniosku, sprawozdania albo strony jednostki.",
+    image: {
+      src: "/images/bpp-ai/sylwetka_naukowca.png",
+      width: 2160,
+      height: 5188,
+      alt: "Sylwetka naukowca złożona z danych BPP: metryki dorobku, wykres aktywności 1988–2026, główne obszary badań, ranking czasopism, najwyżej punktowane prace, sieć współpracy i pozycja autorska.",
+    },
+  },
+  {
+    icon: Building2,
+    prompt:
+      "Złóż sylwetkę Kliniki Nefrologii: dorobek w liczbach, czołowych autorów, najważniejsze prace, dynamikę w czasie i wstępną gotowość do ewaluacji. Gotowe do druku.",
+    answer:
+      "W odpowiedzi: karta jednostki — statystyki, ranking autorów, struktura dorobku i wstępny obraz pod limit 3N do weryfikacji przez zespół.",
+    image: {
+      src: "/images/bpp-ai/sylwetka_jednostki.png",
+      width: 2160,
+      height: 4850,
+      alt: "Sylwetka jednostki złożona z danych BPP: dorobek w liczbach, wykres aktywności 2014–2025, czołowi autorzy, struktura publikacji, najważniejsze prace oraz panel gotowości do ewaluacji pod limit 3N.",
+    },
+  },
+  {
     icon: LineChart,
     prompt:
       "Pokaż, jak w ostatnich pięciu latach zmieniał się udział publikacji w otwartym dostępie w poszczególnych jednostkach. Przedstaw to na wykresie i wskaż jednostki z największym wzrostem.",
@@ -295,8 +321,8 @@ export default function BppAiPage() {
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold mb-3">Przykładowe zapytania</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Tak wyglądają pytania zadawane asystentowi — zwykłym zdaniem, bez znajomości struktury bazy i bez
-                jednego eksportu do arkusza.
+                Od gotowej sylwetki naukowca czy całej jednostki po szybki wykres i tabelę — wszystko zwykłym zdaniem,
+                bez znajomości struktury bazy i bez jednego eksportu do arkusza.
               </p>
             </div>
 
