@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { BookOpen, Users, BarChart3, Download, Upload, Network, Award, Globe, Shield, Calendar, Sparkles, ArrowRight } from "lucide-react"
+import { BookOpen, Users, BarChart3, Download, Upload, Network, Award, Globe, Shield, Calendar, Sparkles, ArrowRight, Search, Unlock } from "lucide-react"
 import Image from "next/image"
 
 // Rok rozpoczęcia prac nad BPP — staż systemu liczymy dynamicznie, żeby nie trzeba
@@ -62,6 +62,12 @@ export default function HomePage() {
               <Button size="lg" variant="outline" asChild>
                 <Link href="/o-systemie">Dowiedz się więcej</Link>
               </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/bpp-ai">
+                  <Sparkles className="mr-2 h-5 w-5 text-primary" />
+                  Sztuczna inteligencja
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -110,6 +116,16 @@ export default function HomePage() {
                   <CardTitle>Raporty i analizy</CardTitle>
                   <CardDescription>
                     Generowanie raportów dla jednostek, wydziałów i indywidualnych autorów
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+
+              <Card className="card-hover">
+                <CardHeader>
+                  <Search className="h-10 w-10 text-primary mb-2" />
+                  <CardTitle>Wyszukiwanie i przeglądanie</CardTitle>
+                  <CardDescription>
+                    Pełnotekstowe wyszukiwanie, filtry i zaawansowane zapytania w publicznym katalogu
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -198,6 +214,16 @@ export default function HomePage() {
 
               <Card className="card-hover">
                 <CardHeader>
+                  <Unlock className="h-10 w-10 text-primary mb-2" />
+                  <CardTitle>Open Access</CardTitle>
+                  <CardDescription>
+                    Automatyczna klasyfikacja i monitorowanie publikacji w otwartym dostępie
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+
+              <Card className="card-hover">
+                <CardHeader>
                   <Globe className="h-10 w-10 text-primary mb-2" />
                   <CardTitle>Dostęp przez WWW</CardTitle>
                   <CardDescription>Interfejs webowy dostępny z każdego urządzenia i przeglądarki</CardDescription>
@@ -218,11 +244,15 @@ export default function HomePage() {
         {/* Stats Section */}
         <section className="py-20 px-4 bg-muted/20">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-12 animate-fade-in">System w liczbach</h2>
+            <h2 className="text-3xl font-bold mb-12 animate-fade-in">BPP w skrócie</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 animate-stagger">
               <div className="bg-card p-8 rounded-lg border card-hover">
-                <div className="text-4xl font-bold text-primary mb-2">20+</div>
-                <div className="text-muted-foreground">lat rozwoju</div>
+                <div className="text-4xl font-bold text-primary mb-2" suppressHydrationWarning>
+                  {latRozwoju}
+                </div>
+                <div className="text-muted-foreground" suppressHydrationWarning>
+                  {odmienLata(latRozwoju)} rozwoju
+                </div>
               </div>
               <div className="bg-card p-8 rounded-lg border card-hover">
                 <div className="text-4xl font-bold text-primary mb-2">MIT</div>
@@ -231,6 +261,18 @@ export default function HomePage() {
               <div className="bg-card p-8 rounded-lg border card-hover">
                 <div className="text-4xl font-bold text-primary mb-2">100%</div>
                 <div className="text-muted-foreground">darmowy</div>
+              </div>
+              <div className="bg-card p-8 rounded-lg border card-hover">
+                <div className="text-4xl font-bold text-primary mb-2">7+</div>
+                <div className="text-muted-foreground">aktywnych wdrożeń</div>
+              </div>
+              <div className="bg-card p-8 rounded-lg border card-hover">
+                <div className="text-4xl font-bold text-primary mb-2">15+</div>
+                <div className="text-muted-foreground">integracji i standardów wymiany danych</div>
+              </div>
+              <div className="bg-card p-8 rounded-lg border card-hover">
+                <div className="text-4xl font-bold text-primary mb-2">AI</div>
+                <div className="text-muted-foreground">natywny serwer MCP</div>
               </div>
             </div>
           </div>

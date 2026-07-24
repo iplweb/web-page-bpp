@@ -238,8 +238,8 @@ export default function AboutPage() {
                     <span className="text-orange-600 font-bold text-xs">JSON</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-sm">JSON API</h4>
-                    <p className="text-xs text-muted-foreground">wszystkie dane natychmiast do pobrania</p>
+                    <h4 className="font-semibold text-sm">REST API</h4>
+                    <p className="text-xs text-muted-foreground">publiczne API JSON, tylko do odczytu, z wyszukiwaniem</p>
                   </div>
                 </div>
 
@@ -304,12 +304,52 @@ export default function AboutPage() {
                 </div>
 
                 <div className="flex flex-col items-center text-center space-y-3">
+                  <div className="w-16 h-16 bg-cyan-100 rounded-lg flex items-center justify-center">
+                    <span className="text-cyan-700 font-bold text-xs">PubMed</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm">PubMed</h4>
+                    <p className="text-xs text-muted-foreground">import rekordów i identyfikatorów PMID</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <div className="w-16 h-16 bg-rose-100 rounded-lg flex items-center justify-center">
+                    <span className="text-rose-600 font-bold text-xs">Scholar</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm">Google Scholar</h4>
+                    <p className="text-xs text-muted-foreground">metadane cytowań i indeksacja prac</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center text-center space-y-3">
                   <div className="w-16 h-16 bg-amber-100 rounded-lg flex items-center justify-center">
                     <span className="text-amber-700 font-bold text-sm">MCP</span>
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm">Serwer MCP</h4>
                     <p className="text-xs text-muted-foreground">dostęp dla asystentów AI</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <div className="w-16 h-16 bg-violet-100 rounded-lg flex items-center justify-center">
+                    <span className="text-violet-700 font-bold text-sm">SSO</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm">Logowanie SSO</h4>
+                    <p className="text-xs text-muted-foreground">OpenID Connect, Microsoft 365, LDAP</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <div className="w-16 h-16 bg-emerald-100 rounded-lg flex items-center justify-center">
+                    <span className="text-emerald-700 font-bold text-xs">XLSX</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm">XLSX / PDF</h4>
+                    <p className="text-xs text-muted-foreground">eksport raportów i zestawień</p>
                   </div>
                 </div>
               </div>
