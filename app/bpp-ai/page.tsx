@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
-import { CodeBlock } from "@/components/code-block"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -32,6 +31,7 @@ import {
   Gauge,
   LineChart,
   MessageSquare,
+  Copy,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -58,6 +58,27 @@ const flow = [
     title: "Twoja instalacja BPP",
     description:
       "Serwer łączy się z Waszą bazą przez publiczne API — po zalogowaniu Twoim własnym kontem BPP, z Twoimi uprawnieniami i wyłącznie do odczytu.",
+  },
+]
+
+const skillPoints = [
+  {
+    icon: BookMarked,
+    title: "Zestaw instrukcji, nie program",
+    description:
+      "Umiejętność to katalog z plikiem instrukcji (i pomocniczymi skryptami) — „przepis” na rozmowę z API BPP: gdzie pytać, jak się zalogować, jak stronicować i budować złożone zapytania. To wiedza przekazana asystentowi, a nie działający w tle serwer.",
+  },
+  {
+    icon: Bot,
+    title: "Asystent wykonuje ją sam",
+    description:
+      "Gdy Twoje pytanie dotyczy BPP, asystent w locie sięga po umiejętność i sam realizuje kolejne kroki — wyszukiwanie, pobieranie rekordów, stronicowanie, a dla zalogowanych zapytania DjangoQL. Tak, jakby dostał instrukcję obsługi bazy.",
+  },
+  {
+    icon: Copy,
+    title: "Wystarczy skopiować katalog",
+    description:
+      "Instalacja sprowadza się do skopiowania folderu do asystenta, który obsługuje umiejętności (np. Claude Code). Nic nie działa w tle, nie ma zależności do utrzymania — najprostszy sposób, by sprawdzić, o co w tym wszystkim chodzi.",
   },
 ]
 
@@ -263,7 +284,7 @@ export default function BppAiPage() {
         </section>
 
         {/* Jak to działa */}
-        <section className="px-4 py-12">
+        <section className="px-4 py-12 bg-muted/20">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold mb-3">Czym jest serwer MCP</h2>
@@ -283,6 +304,31 @@ export default function BppAiPage() {
                     </div>
                     <CardTitle>{step.title}</CardTitle>
                     <CardDescription>{step.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Czym jest umiejętność (skill) */}
+        <section className="px-4 py-12">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold mb-3">Czym jest umiejętność (skill) dla asystenta</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Lżejsza droga niż serwer MCP. Umiejętność (ang. <em>skill</em>) to nie program, lecz zestaw instrukcji,
+                który wręczasz asystentowi. Czyta go w locie i pracę wykonuje sam — bez niczego uruchomionego w tle.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-stagger">
+              {skillPoints.map((point) => (
+                <Card key={point.title} className="card-hover">
+                  <CardHeader>
+                    <point.icon className="h-10 w-10 text-primary mb-2" />
+                    <CardTitle className="text-lg">{point.title}</CardTitle>
+                    <CardDescription>{point.description}</CardDescription>
                   </CardHeader>
                 </Card>
               ))}
@@ -430,8 +476,7 @@ export default function BppAiPage() {
                     wyniki. Obsługuje logowanie do BPP i zapytania zaawansowane. Wymaga jednorazowej instalacji.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="mt-auto space-y-4">
-                  <CodeBlock>uvx --from git+https://github.com/iplweb/bpp-mcp bpp-mcp</CodeBlock>
+                <CardContent className="mt-auto">
                   <Button variant="outline" className="w-full" asChild>
                     <Link href="https://github.com/iplweb/bpp-mcp" target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
@@ -454,8 +499,7 @@ export default function BppAiPage() {
                     sprawdzić, o co w tym wszystkim chodzi.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="mt-auto space-y-4">
-                  <CodeBlock>git clone https://github.com/iplweb/bpp-skills.git</CodeBlock>
+                <CardContent className="mt-auto">
                   <Button variant="outline" className="w-full" asChild>
                     <Link href="https://github.com/iplweb/bpp-skills" target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
