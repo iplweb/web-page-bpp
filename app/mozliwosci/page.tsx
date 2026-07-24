@@ -19,6 +19,7 @@ import {
   Inbox,
   Network,
   Unlock,
+  Sparkles,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -74,6 +75,17 @@ export default function FeaturesPage() {
         "Eksport do systemu Primo® firmy Ex Libris",
         "Wymiana danych przez protokół OAI-PMH",
         "Import i eksport danych w formacie BibTeX",
+      ],
+    },
+    {
+      icon: Sparkles,
+      title: "Integracja ze sztuczną inteligencją",
+      description: "Dostęp do bazy dla asystentów AI przez serwer MCP",
+      details: [
+        "Serwer BPP-MCP łączy bazę z asystentami AI (Claude, ChatGPT)",
+        "Pytania o dorobek naukowy zadawane zwykłym językiem",
+        "Zestawienia, tabele i wykresy bez gotowego raportu",
+        "Połączenie przez publiczne API, wyłącznie do odczytu",
       ],
     },
     {

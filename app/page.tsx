@@ -6,47 +6,28 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { BookOpen, Users, BarChart3, Download, Upload, Network, Award, Globe, Shield, Calendar, Rocket, ArrowRight } from "lucide-react"
+import { BookOpen, Users, BarChart3, Download, Upload, Network, Award, Globe, Shield, Calendar, Sparkles, ArrowRight } from "lucide-react"
 import Image from "next/image"
 
+// Rok rozpoczęcia prac nad BPP — staż systemu liczymy dynamicznie, żeby nie trzeba
+// go było poprawiać co Nowy Rok.
+const ROK_STARTU = 2004
+
+// "22 lata", ale "25 lat" — polska odmiana liczebnika przy rzeczowniku "rok".
+function odmienLata(n: number) {
+  const jednosci = n % 10
+  const dziesiatki = n % 100
+  return jednosci >= 2 && jednosci <= 4 && !(dziesiatki >= 12 && dziesiatki <= 14) ? "lata" : "lat"
+}
+
 export default function HomePage() {
+  const latRozwoju = new Date().getFullYear() - ROK_STARTU
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
 
       <main className="flex-1">
-        {/* BPP-CRIS announcement panel */}
-        <section className="px-4 pt-6">
-          <div className="container mx-auto max-w-5xl">
-            <Link href="/bpp-cris" className="group block animate-fade-in">
-              <div className="relative overflow-hidden rounded-2xl border-2 border-orange-300/70 bg-gradient-to-r from-orange-400/50 via-orange-300/30 to-transparent px-6 py-5 shadow-sm transition-all hover:border-orange-400/80 hover:shadow-md sm:px-8 sm:py-6">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-start gap-4 sm:items-center">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                      <Rocket className="h-6 w-6" />
-                    </span>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h2 className="text-xl font-bold sm:text-2xl">
-                          BPP staje się <span className="text-primary">BPP-CRIS</span>
-                        </h2>
-                        <Badge variant="secondary">zapowiedź</Badge>
-                      </div>
-                      <p className="mt-1 text-sm text-muted-foreground text-pretty sm:text-base">
-                        Repozytorium, ludzie nauki, projekty i potencjał badawczy — część już działa, reszta w drodze.
-                      </p>
-                    </div>
-                  </div>
-                  <span className="inline-flex shrink-0 items-center self-start rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-transform group-hover:scale-[1.03] sm:self-auto">
-                    Poznaj zapowiedź
-                    <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </section>
-
         {/* Hero Section */}
         <section className="pt-20 pb-2 px-4 text-center bg-gradient-to-b from-background to-muted/20">
           <div className="container mx-auto max-w-4xl">
@@ -67,8 +48,12 @@ export default function HomePage() {
 
             <p className="text-xl text-muted-foreground mb-8 text-pretty max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.3s" }}>
               Profesjonalny system informatyczny do katalogowania i zarządzania publikacjami pracowników jednostek
-              naukowych. Rozwijany od kilkunastu lat. Modyfikowany pod najdrobniejsze zarządzenia Ministerstwa czy
-              wahnięcia API PBNu.
+              naukowych. Modyfikowany pod najdrobniejsze zarządzenia Ministerstwa czy wahnięcia API PBNu. Przez{" "}
+              <span suppressHydrationWarning>
+                {latRozwoju} {odmienLata(latRozwoju)}
+              </span>{" "}
+              tworzony dla ludzi, zaś od 2026 również z myślą o maszynach. O dorobek uczelni zapytasz zwyczajnie —
+              po polsku, a sztuczna inteligencja ma tu własne drzwi do danych: natywny serwer MCP z otwartym API.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <Button size="lg" asChild>
@@ -86,10 +71,10 @@ export default function HomePage() {
           <div className="container mx-auto">
             <div className="text-center mb-16 animate-fade-in">
               <Image
-                src="/images/bpp-integracje.png"
-                alt="Schemat wymiany danych BPP — wejścia (zgłoszenia przez formularz, PBN, CrossRef, Web of Science, DSpace), BPP jako centralny hub informacji naukowej, oraz wyjścia (PBN, OAI-PMH, API, DSpace, raporty dla uczelni, ewaluacja z optymalizacją, wizualizacje, profile naukowców, strona WWW instytucji)"
-                width={2560}
-                height={2000}
+                src="/images/bpp-integracje.svg"
+                alt="Schemat wymiany danych BPP — wejścia (zgłoszenia przez formularz, PBN, CrossRef, Web of Science, DSpace), BPP jako centralny hub informacji naukowej, wyjścia (PBN, OAI-PMH, API, serwer MCP dla modeli językowych, DSpace, raporty dla uczelni, ewaluacja z optymalizacją, wizualizacje, profile naukowców, strona WWW instytucji) oraz wyszukiwanie (zapytania QL, pełny tekst, formularz GUI, przeglądanie, język naturalny LLM, sztuczna inteligencja MCP)"
+                width={2000}
+                height={1800}
                 className="mx-auto mb-10 w-full max-w-4xl h-auto rounded-xl shadow-sm"
               />
               <h2 className="text-3xl font-bold mb-4">Kluczowe możliwości systemu</h2>
@@ -169,6 +154,27 @@ export default function HomePage() {
                   </div>
                 </CardContent>
               </Card>
+
+              <Link href="/bpp-ai" className="group block">
+                <Card className="card-hover h-full border-primary/40 bg-primary/5">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <Sparkles className="h-10 w-10 text-primary mb-2" />
+                      <Badge variant="secondary">nowość</Badge>
+                    </div>
+                    <CardTitle>Sztuczna inteligencja</CardTitle>
+                    <CardDescription>
+                      Podłącz bazę do asystenta AI przez serwer MCP i pytaj o dorobek naukowy zwykłym językiem
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <span className="inline-flex items-center text-sm font-medium text-primary">
+                      Poznaj BPP-MCP
+                      <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
 
               <Card className="card-hover">
                 <CardHeader>

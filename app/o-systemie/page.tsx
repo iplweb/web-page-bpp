@@ -29,6 +29,24 @@ const faqs = [
       "Dużą część danych można zaimportować automatycznie — z PBN, baz CrossRef i Web of Science, repozytoriów DSpace, a także ze zgłoszeń pracowników. Ręczne wprowadzanie jest możliwe, ale nie jest jedyną drogą.",
   },
   {
+    question: "Czy BPP współpracuje ze sztuczną inteligencją (AI)?",
+    answer: (
+      <>
+        Tak. Serwer <strong>BPP-MCP</strong> podłącza bazę do asystenta AI — np. Claude lub ChatGPT — dzięki czemu o
+        dorobek naukowy można pytać zwykłym językiem i otrzymywać zestawienia oraz wykresy tam, gdzie nie ma gotowego
+        raportu. Asystent łączy się z bazą przez publiczne API, na Twoim koncie i z Twoimi uprawnieniami, wyłącznie do
+        odczytu — niczego nie zmienia ani nie usuwa. Szczegóły opisujemy na stronie{" "}
+        <Link
+          href="/bpp-ai"
+          className="font-medium text-primary underline underline-offset-2 hover:no-underline"
+        >
+          Sztuczna inteligencja w BPP
+        </Link>
+        .
+      </>
+    ),
+  },
+  {
     question: "Czy jedna instalacja obsłuży kilka jednostek lub uczelni?",
     answer:
       "Tak. Mechanizm federacji pozwala obsługiwać wiele instytucji na jednej instalacji oprogramowania, co upraszcza utrzymanie i obniża koszty dla grup jednostek.",
@@ -179,7 +197,9 @@ export default function AboutPage() {
           <Card className="mb-12 card-hover animate-fade-in">
             <CardHeader>
               <CardTitle>System BPP jest systemem otwartym</CardTitle>
-              <CardDescription>Integracje z krajowymi i międzynarodowymi systemami bibliograficznymi</CardDescription>
+              <CardDescription>
+                Integracje z krajowymi i międzynarodowymi systemami, standardami wymiany danych oraz asystentami AI
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-6 animate-stagger">
@@ -282,7 +302,28 @@ export default function AboutPage() {
                     <p className="text-xs text-muted-foreground">metadane publikacji i DOI</p>
                   </div>
                 </div>
+
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <div className="w-16 h-16 bg-amber-100 rounded-lg flex items-center justify-center">
+                    <span className="text-amber-700 font-bold text-sm">MCP</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-sm">Serwer MCP</h4>
+                    <p className="text-xs text-muted-foreground">dostęp dla asystentów AI</p>
+                  </div>
+                </div>
               </div>
+
+              <p className="mt-8 text-sm text-muted-foreground text-pretty">
+                <strong>Nowość:</strong> przez serwer <strong>MCP</strong> dane BPP udostępnisz asystentom AI (Claude,
+                ChatGPT) — pytania zwykłym językiem zamiast eksportu do arkusza.{" "}
+                <Link
+                  href="/bpp-ai"
+                  className="font-medium text-primary underline underline-offset-2 hover:no-underline"
+                >
+                  Sztuczna inteligencja w BPP →
+                </Link>
+              </p>
             </CardContent>
           </Card>
 

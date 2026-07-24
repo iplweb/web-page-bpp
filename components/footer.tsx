@@ -2,6 +2,8 @@ import Link from "next/link"
 import Image from "next/image"
 
 export function Footer() {
+  const rok = new Date().getFullYear()
+
   return (
     <footer className="border-t bg-muted/50">
       <div className="container mx-auto px-4 py-12">
@@ -30,6 +32,11 @@ export function Footer() {
               <li>
                 <Link href="/mozliwosci" className="text-muted-foreground hover:text-foreground">
                   Możliwości
+                </Link>
+              </li>
+              <li>
+                <Link href="/bpp-ai" className="text-muted-foreground hover:text-foreground">
+                  Sztuczna inteligencja
                 </Link>
               </li>
               <li>
@@ -81,7 +88,9 @@ export function Footer() {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; 2004-2025 Bibliografia Publikacji Pracowników. Oprogramowanie na licencji MIT.</p>
+          <p suppressHydrationWarning>
+            &copy; 2004-{rok} Bibliografia Publikacji Pracowników. Oprogramowanie na licencji MIT.
+          </p>
         </div>
       </div>
     </footer>
