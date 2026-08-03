@@ -34,16 +34,22 @@ export default function DemoPage() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  // Wynik wysyłki pokazujemy w formularzu zamiast blokującego alert()
+  const [status, setStatus] = useState<{ type: "success" | "error"; message: string } | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setStatus(null)
 
     try {
       const result = await sendContactForm(formData)
 
       if (result.success) {
-        alert("Dziękujemy za zgłoszenie! Skontaktujemy się z Państwem w ciągu 24 godzin.")
+        setStatus({
+          type: "success",
+          message: "Dziękujemy za zgłoszenie! Skontaktujemy się z Państwem w ciągu 24 godzin.",
+        })
 
         setFormData({
           name: "",
@@ -61,14 +67,19 @@ export default function DemoPage() {
           agreedToTerms: false,
         })
       } else {
-        alert(
-          result.error ||
+        setStatus({
+          type: "error",
+          message:
+            result.error ||
             "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.",
-        )
+        })
       }
     } catch (error) {
       console.error("Form submission error:", error)
-      alert("Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.")
+      setStatus({
+        type: "error",
+        message: "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.",
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -137,7 +148,7 @@ export default function DemoPage() {
                     <p className="text-sm text-amber-800">
                       Szczegółowe informacje o konfiguracji integracji z Polską Bibliografią Naukową znajdziesz na
                       stronie{" "}
-                      <Link href="/pobierz" className="text-amber-600 hover:text-amber-700 underline">
+                      <Link href="/zrodla" className="text-amber-600 hover:text-amber-700 underline">
                         "Pobierz"
                       </Link>
                     </p>
@@ -324,6 +335,20 @@ export default function DemoPage() {
                       <Mail className="mr-2 h-4 w-4" />
                       {isSubmitting ? "Wysyłanie..." : "Wyślij wniosek o demo"}
                     </Button>
+
+                    <div aria-live="polite">
+                      {status && (
+                        <p
+                          className={`rounded-lg border p-3 text-sm ${
+                            status.type === "success"
+                              ? "border-green-200 bg-green-50 text-green-800"
+                              : "border-red-200 bg-red-50 text-red-800"
+                          }`}
+                        >
+                          {status.message}
+                        </p>
+                      )}
+                    </div>
                   </form>
                 </CardContent>
               </Card>

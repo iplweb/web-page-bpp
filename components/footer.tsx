@@ -56,9 +56,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/zrodla" className="text-muted-foreground hover:text-foreground">
+                <a
+                  href="https://iplweb.github.io/bpp/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground"
+                >
                   Dokumentacja
-                </Link>
+                </a>
               </li>
               <li>
                 <Link href="/kontakt" className="text-muted-foreground hover:text-foreground">
