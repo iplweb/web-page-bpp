@@ -15,6 +15,7 @@ import {
   Lightbulb,
   Network,
   Workflow,
+  Globe,
   GraduationCap,
   Building2,
   Calendar,
@@ -24,7 +25,7 @@ import {
 export const metadata: Metadata = {
   title: "BPP-CRIS — zapowiedź nowych funkcji | Bibliografia Publikacji Pracowników",
   description:
-    "BPP ewoluuje w pełny system informacji o nauce (CRIS): repozytorium, profile naukowców, projekty i granty, potencjał badawczy, zbiory danych badawczych i więcej. Część funkcji już działa, kolejne powstają.",
+    "BPP ewoluuje w pełny system informacji o nauce (CRIS): interoperacyjność z euroCRIS (CERIF-XML, OpenAIRE), repozytorium, profile naukowców, projekty i granty, potencjał badawczy i więcej. Część funkcji już działa, kolejne powstają.",
 }
 
 // Statusy gotowości modułów: available = już w BPP, soon = w planach
@@ -51,7 +52,7 @@ const modules = [
   {
     icon: FolderKanban,
     title: "Projekty i granty",
-    status: "soon",
+    status: "available",
     description:
       "Ewidencja projektów badawczych i finansowania: harmonogramy, źródła, zespoły i rezultaty. Mniej pracy przy raportowaniu i pełna historia aktywności grantowej jednostki.",
   },
@@ -89,6 +90,13 @@ const modules = [
     status: "available",
     description:
       "Otwarte API (JSON, REST) oraz udostępnianie metadanych przez OAI-PMH — swobodny eksport i wymiana danych z innymi systemami i agregatorami, bez uzależnienia od dostawcy.",
+  },
+  {
+    icon: Globe,
+    title: "Interoperacyjność z euroCRIS",
+    status: "available",
+    description:
+      "Eksport danych w standardzie CERIF-XML zgodnie z wytycznymi OpenAIRE CRIS Guidelines — publikacje, osoby, jednostki, projekty i finansowanie trafiają do europejskiej infrastruktury nauki bez dodatkowej pracy.",
   },
 ] as const
 
@@ -136,6 +144,49 @@ export default function BppCrisPage() {
               BPP ewoluuje z bibliografii publikacji w pełny <strong>system informacji o nauce (CRIS)</strong> — jedno
               źródło prawdy o dorobku, ludziach, projektach i potencjale badawczym uczelni.
             </p>
+          </div>
+        </section>
+
+        {/* Wyróżnienie: interoperacyjność z euroCRIS */}
+        <section className="px-4 pb-10">
+          <div className="container mx-auto max-w-4xl">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg p-8 animate-fade-in">
+              <div className="text-center">
+                <Badge className={`mb-4 ${statusConfig.available.className}`}>
+                  <Check className="mr-1 h-3 w-3" />
+                  Nowość · już dostępne
+                </Badge>
+                <h2 className="text-2xl font-bold mb-4">Interoperacyjność z euroCRIS</h2>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                  BPP udostępnia dane w CERIF-XML — międzynarodowym formacie wymiany informacji o nauce opracowanym
+                  przez organizację euroCRIS — zgodnie z wytycznymi OpenAIRE CRIS Guidelines. Dorobek uczelni jest
+                  gotowy do agregacji przez europejską infrastrukturę nauki bez dodatkowej pracy po Waszej stronie.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <Globe className="h-8 w-8 text-primary mx-auto mb-2" />
+                    <h3 className="font-semibold mb-1">Standard CERIF-XML</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Format wymiany danych o nauce rozwijany przez euroCRIS
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <Workflow className="h-8 w-8 text-primary mx-auto mb-2" />
+                    <h3 className="font-semibold mb-1">Wytyczne OpenAIRE</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Eksport przez OAI-PMH zgodny z OpenAIRE CRIS Guidelines 1.2.0
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <Database className="h-8 w-8 text-primary mx-auto mb-2" />
+                    <h3 className="font-semibold mb-1">Pełny zakres danych</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Publikacje, osoby, jednostki, projekty, finansowanie, patenty i konferencje
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

@@ -28,6 +28,66 @@ export default function HomePage() {
       <Navigation />
 
       <main className="flex-1">
+        {/* Announcement panels: euroCRIS + AI */}
+        <section className="px-4 pt-6">
+          <div className="container mx-auto max-w-5xl space-y-4">
+            <Link href="/bpp-cris" className="group block animate-fade-in">
+              <div className="relative overflow-hidden rounded-2xl border-2 border-orange-300/70 bg-gradient-to-r from-orange-400/50 via-orange-300/30 to-transparent px-6 py-5 shadow-sm transition-all hover:border-orange-400/80 hover:shadow-md sm:px-8 sm:py-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-start gap-4 sm:items-center">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                      <Globe className="h-6 w-6" />
+                    </span>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h2 className="text-xl font-bold sm:text-2xl">
+                          Interoperacyjność z <span className="text-primary">euroCRIS</span>
+                        </h2>
+                        <Badge variant="secondary">nowość</Badge>
+                      </div>
+                      <p className="mt-1 text-sm text-muted-foreground text-pretty sm:text-base">
+                        BPP eksportuje dane w standardzie CERIF-XML wg wytycznych OpenAIRE, a projekty i granty są już
+                        dostępne.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="inline-flex shrink-0 items-center self-start rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-transform group-hover:scale-[1.03] sm:self-auto">
+                    Zobacz szczegóły
+                    <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+            <Link href="/bpp-ai" className="group block animate-fade-in" style={{ animationDelay: "0.1s" }}>
+              <div className="relative overflow-hidden rounded-2xl border-2 border-orange-300/70 bg-gradient-to-r from-orange-400/50 via-orange-300/30 to-transparent px-6 py-5 shadow-sm transition-all hover:border-orange-400/80 hover:shadow-md sm:px-8 sm:py-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-start gap-4 sm:items-center">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                      <Sparkles className="h-6 w-6" />
+                    </span>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h2 className="text-xl font-bold sm:text-2xl">
+                          Sztuczna inteligencja w <span className="text-primary">BPP</span>
+                        </h2>
+                        <Badge variant="secondary">nowość</Badge>
+                      </div>
+                      <p className="mt-1 text-sm text-muted-foreground text-pretty sm:text-base">
+                        O dorobek uczelni zapytasz po polsku, a modele językowe mają własne drzwi do danych — natywny
+                        serwer MCP i otwarte API.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="inline-flex shrink-0 items-center self-start rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-transform group-hover:scale-[1.03] sm:self-auto">
+                    Poznaj BPP-AI
+                    <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
+
         {/* Hero Section */}
         <section className="pt-20 pb-2 px-4 text-center bg-gradient-to-b from-background to-muted/20">
           <div className="container mx-auto max-w-4xl">
@@ -55,7 +115,7 @@ export default function HomePage() {
               tworzony dla ludzi, zaś od 2026 również z myślą o maszynach. O dorobek uczelni zapytasz zwyczajnie —
               po polsku, a sztuczna inteligencja ma tu własne drzwi do danych: natywny serwer MCP z otwartym API.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <Button size="lg" asChild>
                 <Link href="/demo">Wypróbuj demo</Link>
               </Button>
@@ -66,6 +126,12 @@ export default function HomePage() {
                 <Link href="/bpp-ai">
                   <Sparkles className="mr-2 h-5 w-5 text-primary" />
                   Sztuczna inteligencja
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/bpp-cris">
+                  <Globe className="mr-2 h-5 w-5 text-primary" />
+                  BPP-CRIS
                 </Link>
               </Button>
             </div>
