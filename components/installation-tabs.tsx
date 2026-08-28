@@ -352,6 +352,13 @@ export function InstallationTabs() {
               Windows), wpisz <strong>ubuntu</strong> i kliknij aplikację:
             </p>
             <AppShortcut src="/ubuntu-icon.svg" label="Ubuntu" />
+            <div className="mt-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
+              <p className="text-amber-800 dark:text-amber-200 font-medium text-xs">
+                Nie widzisz ikony Ubuntu? Zrestartuj komputer. Instalacja WSL2 z kroku 1
+                kończy się dopiero po ponownym uruchomieniu systemu — wcześniej Ubuntu nie
+                pojawi się w menu Start.
+              </p>
+            </div>
             <p className="mt-3">
               Przy pierwszym uruchomieniu Ubuntu poprosi o nazwę użytkownika i hasło — to
               konto wewnątrz Linuksa, niezależne od konta Windows. Hasło zapamiętaj, będzie
