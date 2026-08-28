@@ -160,29 +160,13 @@ export function InstallationTabs() {
             </p>
           </Step>
 
-          <Step number={3} title="Zainstaluj envsubst">
-            <p>
-              Wymagane do generowania konfiguracji. Zainstaluj przez{" "}
-              <Link
-                href="https://brew.sh/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline underline-offset-4 hover:text-primary/80"
-              >
-                Homebrew
-              </Link>
-              :
-            </p>
-            <CodeBlock>brew install gettext</CodeBlock>
-          </Step>
-
-          <CloneAndRun stepStart={4} />
+          <CloneAndRun stepStart={3} />
         </TabsContent>
 
         <TabsContent value="linux" className="mt-4">
           <Step number={1} title="Zainstaluj narzędzia systemowe">
             <p>Na Debian/Ubuntu otwórz terminal i wpisz:</p>
-            <CodeBlock>sudo apt update && sudo apt install -y git make openssl gettext</CodeBlock>
+            <CodeBlock>sudo apt update && sudo apt install -y git make openssl</CodeBlock>
           </Step>
 
           <Step number={2} title="Zainstaluj Docker Engine">
