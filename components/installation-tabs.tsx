@@ -203,7 +203,12 @@ export function InstallationTabs() {
               Otwórz <strong>PowerShell</strong> (zwykły — instalator Dockera sam poprosi
               o uprawnienia administratora) i wklej:
             </p>
-            <CodeBlock>{"winget install -e --id Git.Git\nwinget install -e --id Docker.DockerDesktop\nwinget install -e --id ezwinports.make"}</CodeBlock>
+            <CodeBlock>{"winget install -e --id Git.Git --source winget\nwinget install -e --id Docker.DockerDesktop --source winget\nwinget install -e --id ezwinports.make --source winget"}</CodeBlock>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Przełącznik <code className="bg-muted px-1 rounded">--source winget</code> jest
+              istotny: bez niego winget szuka pakietu również w Sklepie Microsoft i zamiast
+              instalować, pyta o wybór źródła albo o akceptację regulaminu Sklepu.
+            </p>
             <p className="mt-2">
               To komplet potrzebnych narzędzi:{" "}
               <Link
