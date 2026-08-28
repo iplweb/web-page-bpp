@@ -149,7 +149,7 @@ export function InstallationTabs() {
             <p>
               Pobierz i zainstaluj{" "}
               <Link
-                href="https://docs.docker.com/desktop/install/mac-install/"
+                href="https://www.docker.com/products/docker-desktop/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4 hover:text-primary/80"
@@ -221,13 +221,37 @@ export function InstallationTabs() {
             </p>
             <CodeBlock>{"winget install -e --id Git.Git\nwinget install -e --id Docker.DockerDesktop\nwinget install -e --id ezwinports.make"}</CodeBlock>
             <p className="mt-2">
-              To komplet potrzebnych narzędzi: <strong>Git for Windows</strong> (Git Bash
-              z narzędziami Unix — bash, grep, sed, openssl, envsubst),{" "}
-              <strong>Docker Desktop</strong> (Docker Engine i Docker Compose) oraz{" "}
-              <strong>GNU Make</strong> 4.4. Nie musisz instalować Chocolatey ani Scoopa.
+              To komplet potrzebnych narzędzi:{" "}
+              <Link
+                href="https://gitforwindows.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4 hover:text-primary/80"
+              >
+                Git for Windows
+              </Link>
+              {" "}(Git Bash z narzędziami Unix — bash, grep, sed, openssl),{" "}
+              <Link
+                href="https://www.docker.com/products/docker-desktop/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4 hover:text-primary/80"
+              >
+                Docker Desktop
+              </Link>
+              {" "}(Docker Engine i Docker Compose) oraz{" "}
+              <Link
+                href="https://www.gnu.org/software/make/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4 hover:text-primary/80"
+              >
+                GNU Make
+              </Link>
+              {" "}4.4.
             </p>
-            <div className="mt-3 bg-muted rounded-lg border border-border p-3">
-              <p className="text-xs">
+            <div className="mt-3 bg-muted rounded-lg border border-border p-3 text-xs">
+              <p>
                 <code className="bg-background px-1 rounded">winget</code> jest wbudowany
                 w Windows 11 oraz w Windows 10 od wersji 1809 (build 17763), gdzie dostarcza go
                 „Instalator aplikacji”. Sprawdź komendą{" "}
@@ -243,6 +267,77 @@ export function InstallationTabs() {
                 </Link>
                 {" "}ze Sklepu Microsoft.
               </p>
+
+              <details className="mt-3 border-t border-border pt-3">
+                <summary className="font-semibold cursor-pointer">
+                  Nie masz wingeta? (Windows 10 starszy niż 1809, zablokowany Sklep)
+                </summary>
+                <div className="mt-2 space-y-2">
+                  <p>
+                    Pobierz i zainstaluj ręcznie{" "}
+                    <Link
+                      href="https://gitforwindows.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      Git for Windows
+                    </Link>
+                    {" "}oraz{" "}
+                    <Link
+                      href="https://www.docker.com/products/docker-desktop/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      Docker Desktop for Windows
+                    </Link>
+                    .
+                  </p>
+                  <p>
+                    GNU Make nie wymaga menedżera pakietów — to pojedynczy, samowystarczalny
+                    plik. Pobierz{" "}
+                    <Link
+                      href="https://downloads.sourceforge.net/project/ezwinports/make-4.4.1-without-guile-w32-bin.zip"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      make-4.4.1-without-guile-w32-bin.zip
+                    </Link>
+                    {" "}(392 KB, projekt ezwinports — ten sam plik, który instaluje winget),
+                    rozpakuj i skopiuj{" "}
+                    <code className="bg-background px-1 rounded">{"bin\\make.exe"}</code> do{" "}
+                    <code className="bg-background px-1 rounded">{"C:\\Program Files\\Git\\usr\\bin\\"}</code>{" "}
+                    (Windows poprosi o potwierdzenie administratora). Ten katalog jest już
+                    w PATH Git Basha, a <code className="bg-background px-1 rounded">make.exe</code>{" "}
+                    importuje wyłącznie systemowe biblioteki Windows, więc wystarczy ten jeden plik.
+                  </p>
+                  <p>
+                    Jeśli i tak masz już{" "}
+                    <Link
+                      href="https://chocolatey.org/install"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      Chocolatey
+                    </Link>
+                    {" "}albo{" "}
+                    <Link
+                      href="https://scoop.sh/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      Scoopa
+                    </Link>
+                    {" "}— wystarczy <code className="bg-background px-1 rounded">choco install make</code>{" "}
+                    (PowerShell jako Administrator) lub{" "}
+                    <code className="bg-background px-1 rounded">scoop install make</code>.
+                  </p>
+                </div>
+              </details>
             </div>
           </Step>
 
@@ -266,58 +361,6 @@ export function InstallationTabs() {
           </Step>
 
           <CloneAndRun stepStart={4} />
-
-          <details className="mt-8 rounded-lg border border-border bg-card p-4">
-            <summary className="text-sm font-semibold cursor-pointer">
-              Nie masz winget? (Windows 10 starszy niż 1809, zablokowany Sklep)
-            </summary>
-            <div className="mt-3 text-sm text-muted-foreground">
-              <p>
-                Pobierz i zainstaluj ręcznie{" "}
-                <Link
-                  href="https://gitforwindows.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  Git for Windows
-                </Link>
-                {" "}oraz{" "}
-                <Link
-                  href="https://docs.docker.com/desktop/install/windows-install/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  Docker Desktop for Windows
-                </Link>
-                , a GNU Make zainstaluj w PowerShellu jako Administrator przez{" "}
-                <Link
-                  href="https://chocolatey.org/install"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  Chocolatey
-                </Link>
-                :
-              </p>
-              <CodeBlock>choco install make</CodeBlock>
-              <p className="mt-2">
-                lub przez{" "}
-                <Link
-                  href="https://scoop.sh/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  Scoop
-                </Link>
-                :
-              </p>
-              <CodeBlock>scoop install make</CodeBlock>
-            </div>
-          </details>
         </TabsContent>
       </Tabs>
     </div>
