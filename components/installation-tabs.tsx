@@ -72,11 +72,73 @@ function Step({ number, title, children }: { number: number; title: string; chil
   )
 }
 
-function CloneAndRun({ stepStart }: { stepStart: number }) {
+function AppShortcut({ src, label }: { src: string; label: string }) {
+  return (
+    <div className="mt-3 flex items-center gap-3 rounded-lg border border-border bg-card p-3">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={`Ikona ${label}`} className="h-12 w-12 shrink-0" />
+      <span className="text-sm font-medium text-foreground">{label}</span>
+    </div>
+  )
+}
+
+type CloneVariant = "default" | "desktop" | "wsl"
+
+function CloneAndRun({ stepStart, variant = "default" }: { stepStart: number; variant?: CloneVariant }) {
   return (
     <>
-      <Step number={stepStart} title="Sklonuj repozytorium wdrożeniowe">
-        <CodeBlock>git clone https://github.com/iplweb/bpp-deploy.git</CodeBlock>
+      <Step
+        number={stepStart}
+        title={
+          variant === "desktop"
+            ? "Sklonuj repozytorium wdrożeniowe na pulpit"
+            : "Sklonuj repozytorium wdrożeniowe"
+        }
+      >
+        {variant === "desktop" ? (
+          <>
+            <p>
+              Git Bash startuje w katalogu domowym użytkownika, więc najpierw przejdź na
+              pulpit — dzięki temu katalog{" "}
+              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">bpp-deploy</code>{" "}
+              będziesz mieć zawsze pod ręką:
+            </p>
+            <CodeBlock>{"cd Desktop\ngit clone https://github.com/iplweb/bpp-deploy.git"}</CodeBlock>
+            <p className="mt-2">
+              Na dysku katalog pulpitu nazywa się{" "}
+              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">Desktop</code> także
+              w polskiej wersji Windows. Jeśli <code className="bg-muted px-1.5 py-0.5 rounded text-xs">cd Desktop</code>{" "}
+              zgłosi brak katalogu, pulpit przejął OneDrive — wpisz wtedy{" "}
+              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">cd OneDrive/Desktop</code>{" "}
+              lub <code className="bg-muted px-1.5 py-0.5 rounded text-xs">cd OneDrive/Pulpit</code>.
+            </p>
+          </>
+        ) : variant === "wsl" ? (
+          <>
+            <p>
+              Trzymaj repozytorium w systemie plików Linuksa — katalog domowy Ubuntu jest
+              do tego najlepszym miejscem:
+            </p>
+            <CodeBlock>{"cd ~\ngit clone https://github.com/iplweb/bpp-deploy.git"}</CodeBlock>
+            <div className="mt-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
+              <p className="text-amber-800 dark:text-amber-200 font-medium text-xs">
+                Ważne: nie klonuj repozytorium do{" "}
+                <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">/mnt/c/…</code>,
+                czyli na dysk C:, pulpit czy do Dokumentów. Na granicy systemów plików Windows
+                i Linuksa kontenery działają bardzo wolno, a uprawnienia plików nie przenoszą
+                się poprawnie.
+              </p>
+            </div>
+            <p className="mt-2">
+              Do plików zajrzysz z Eksploratora — wpisz w Ubuntu{" "}
+              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">explorer.exe .</code>{" "}
+              albo otwórz ścieżkę{" "}
+              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">{"\\\\wsl$\\Ubuntu\\home"}</code>.
+            </p>
+          </>
+        ) : (
+          <CodeBlock>git clone https://github.com/iplweb/bpp-deploy.git</CodeBlock>
+        )}
       </Step>
 
       <Step number={stepStart + 1} title="Przejdź do katalogu i uruchom system">
@@ -198,153 +260,288 @@ export function InstallationTabs() {
         </TabsContent>
 
         <TabsContent value="windows" className="mt-4">
-          <Step number={1} title="Zainstaluj komplet narzędzi jedną komendą">
-            <p>
-              Otwórz <strong>PowerShell</strong> (zwykły — instalator Dockera sam poprosi
-              o uprawnienia administratora) i wklej:
+          <div className="mb-6 rounded-lg border border-primary/30 bg-primary/5 p-4 text-sm">
+            <p className="font-semibold text-foreground">Najprościej: przez WSL2</p>
+            <p className="mt-1 text-muted-foreground">
+              WSL2 to wbudowany w Windows podsystem Linuksa. Docker Desktop i tak z niego
+              korzysta, więc nic dodatkowego nie instalujesz — a pracując po stronie Ubuntu
+              omijasz wszystkie windowsowe wyjątki: doinstalowywanie GNU Make, przeliczanie
+              ścieżek <code className="bg-muted px-1.5 py-0.5 rounded text-xs">C:\dane</code> →{" "}
+              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">/c/dane</code> i pilnowanie,
+              w którym terminalu uruchamiasz <code className="bg-muted px-1.5 py-0.5 rounded text-xs">make</code>.
             </p>
-            <CodeBlock>{"winget install -e --id Git.Git --source winget\nwinget install -e --id Docker.DockerDesktop --source winget\nwinget install -e --id ezwinports.make --source winget"}</CodeBlock>
+          </div>
+
+          <Step number={1} title="Włącz WSL2 (Windows Subsystem for Linux)">
+            <p>
+              Kliknij prawym przyciskiem na przycisk Start, wybierz{" "}
+              <strong>Terminal (Administrator)</strong> (na Windows 10:{" "}
+              <strong>Windows PowerShell (Administrator)</strong>) i wpisz:
+            </p>
+            <CodeBlock>wsl --install</CodeBlock>
             <p className="mt-2">
-              To komplet potrzebnych narzędzi:{" "}
+              Komenda włącza{" "}
               <Link
-                href="https://gitforwindows.org/"
+                href="https://learn.microsoft.com/pl-pl/windows/wsl/install"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4 hover:text-primary/80"
               >
-                Git for Windows
+                WSL2
               </Link>
-              {" "}(Git Bash z narzędziami Unix — bash, grep, sed, openssl),{" "}
-              <Link
-                href="https://www.docker.com/products/docker-desktop/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline underline-offset-4 hover:text-primary/80"
-              >
-                Docker Desktop
-              </Link>
-              {" "}(Docker Engine i Docker Compose) oraz{" "}
-              <Link
-                href="https://www.gnu.org/software/make/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline underline-offset-4 hover:text-primary/80"
-              >
-                GNU Make
-              </Link>
-              {" "}4.4.
+              {" "}i instaluje dystrybucję Ubuntu, po czym prosi o restart komputera. Jeśli WSL
+              jest już włączony, nic nie zepsuje — po prostu to zgłosi (stan sprawdzisz też
+              przez <code className="bg-muted px-1.5 py-0.5 rounded text-xs">wsl --status</code>).
             </p>
             <div className="mt-3 bg-muted rounded-lg border border-border p-3 text-xs">
               <p>
-                <code className="bg-background px-1 rounded">winget</code> jest wbudowany
-                w Windows 11 oraz w Windows 10 od wersji 1809 (build 17763), gdzie dostarcza go
-                „Instalator aplikacji”. Sprawdź komendą{" "}
-                <code className="bg-background px-1 rounded">winget --version</code>; jeśli
-                nie zadziała, zainstaluj lub zaktualizuj{" "}
+                Wymagany jest Windows 11 albo Windows 10 w wersji 2004 (build 19041) lub
+                nowszej, z włączoną wirtualizacją w BIOS/UEFI — dokładnie te same wymagania,
+                co Docker Desktop. Na starszych wydaniach WSL2 trzeba doinstalować{" "}
                 <Link
-                  href="https://apps.microsoft.com/detail/9nblggh4nns1"
+                  href="https://learn.microsoft.com/pl-pl/windows/wsl/install-manual"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary underline underline-offset-4 hover:text-primary/80"
                 >
-                  Instalator aplikacji
+                  ręcznie
                 </Link>
-                {" "}ze Sklepu Microsoft.
+                .
               </p>
-
-              <details className="mt-3 border-t border-border pt-3">
-                <summary className="font-semibold cursor-pointer">
-                  Nie masz wingeta? (Windows 10 starszy niż 1809, zablokowany Sklep)
-                </summary>
-                <div className="mt-2 space-y-2">
-                  <p>
-                    Pobierz i zainstaluj ręcznie{" "}
-                    <Link
-                      href="https://gitforwindows.org/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary underline underline-offset-4 hover:text-primary/80"
-                    >
-                      Git for Windows
-                    </Link>
-                    {" "}oraz{" "}
-                    <Link
-                      href="https://www.docker.com/products/docker-desktop/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary underline underline-offset-4 hover:text-primary/80"
-                    >
-                      Docker Desktop for Windows
-                    </Link>
-                    .
-                  </p>
-                  <p>
-                    GNU Make nie wymaga menedżera pakietów — to pojedynczy, samowystarczalny
-                    plik. Pobierz{" "}
-                    <Link
-                      href="https://downloads.sourceforge.net/project/ezwinports/make-4.4.1-without-guile-w32-bin.zip"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary underline underline-offset-4 hover:text-primary/80"
-                    >
-                      make-4.4.1-without-guile-w32-bin.zip
-                    </Link>
-                    {" "}(392 KB, projekt ezwinports — ten sam plik, który instaluje winget),
-                    rozpakuj i skopiuj{" "}
-                    <code className="bg-background px-1 rounded">{"bin\\make.exe"}</code> do{" "}
-                    <code className="bg-background px-1 rounded">{"C:\\Program Files\\Git\\usr\\bin\\"}</code>{" "}
-                    (Windows poprosi o potwierdzenie administratora). Ten katalog jest już
-                    w PATH Git Basha, a <code className="bg-background px-1 rounded">make.exe</code>{" "}
-                    importuje wyłącznie systemowe biblioteki Windows, więc wystarczy ten jeden plik.
-                  </p>
-                  <p>
-                    Jeśli i tak masz już{" "}
-                    <Link
-                      href="https://chocolatey.org/install"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary underline underline-offset-4 hover:text-primary/80"
-                    >
-                      Chocolatey
-                    </Link>
-                    {" "}albo{" "}
-                    <Link
-                      href="https://scoop.sh/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary underline underline-offset-4 hover:text-primary/80"
-                    >
-                      Scoopa
-                    </Link>
-                    {" "}— wystarczy <code className="bg-background px-1 rounded">choco install make</code>{" "}
-                    (PowerShell jako Administrator) lub{" "}
-                    <code className="bg-background px-1 rounded">scoop install make</code>.
-                  </p>
-                </div>
-              </details>
             </div>
           </Step>
 
-          <Step number={2} title="Uruchom Docker Desktop">
+          <Step number={2} title="Zainstaluj Docker Desktop i połącz go z Ubuntu">
             <p>
-              Uruchom go z menu Start i poczekaj, aż ikona wieloryba w zasobniku systemowym
-              przestanie się animować. Pierwsze uruchomienie może włączyć WSL2 i poprosić
-              o restart komputera.
+              Otwórz <strong>PowerShell</strong> — naciśnij klawisz Windows, zacznij pisać{" "}
+              <strong>powershell</strong> i kliknij aplikację <strong>Windows PowerShell</strong>:
+            </p>
+            <AppShortcut src="/powershell-icon.png" label="Windows PowerShell" />
+            <p className="mt-3">W otwartym oknie wklej:</p>
+            <CodeBlock>winget install -e --id Docker.DockerDesktop --source winget</CodeBlock>
+            <p className="mt-2">
+              Uruchom Docker Desktop z menu Start i poczekaj, aż ikona wieloryba w zasobniku
+              systemowym przestanie się animować. Następnie wejdź w{" "}
+              <strong>Settings → Resources → WSL Integration</strong> i włącz suwak przy
+              dystrybucji <strong>Ubuntu</strong> — dzięki temu komendy{" "}
+              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">docker</code> i{" "}
+              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">docker compose</code>{" "}
+              zadziałają wprost w Ubuntu, korzystając z tego samego silnika.
+            </p>
+            <div className="mt-3 bg-muted rounded-lg border border-border p-3 text-xs">
+              <p>
+                <code className="bg-background px-1 rounded">winget</code> jest wbudowany
+                w Windows 11 oraz w Windows 10 od wersji 1809 (build 17763). Jeśli komenda
+                nie zadziała, pobierz{" "}
+                <Link
+                  href="https://www.docker.com/products/docker-desktop/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Docker Desktop for Windows
+                </Link>
+                {" "}ręcznie ze strony producenta.
+              </p>
+            </div>
+          </Step>
+
+          <Step number={3} title="Otwórz Ubuntu">
+            <p>
+              Kliknij w pasek wyszukiwania obok przycisku Start (albo naciśnij klawisz
+              Windows), wpisz <strong>ubuntu</strong> i kliknij aplikację:
+            </p>
+            <AppShortcut src="/ubuntu-icon.svg" label="Ubuntu" />
+            <p className="mt-3">
+              Przy pierwszym uruchomieniu Ubuntu poprosi o nazwę użytkownika i hasło — to
+              konto wewnątrz Linuksa, niezależne od konta Windows. Hasło zapamiętaj, będzie
+              potrzebne przy <code className="bg-muted px-1.5 py-0.5 rounded text-xs">sudo</code>.
             </p>
           </Step>
 
-          <Step number={3} title="Otwórz nowe okno Git Bash">
-            <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
-              <p className="text-amber-800 dark:text-amber-200 font-medium text-xs">
-                Ważne: wszystkie komendy <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">make</code> uruchamiaj
-                w <strong>Git Bash</strong>, nie w CMD ani PowerShell. Otwórz świeże okno —
-                dopiero nowy terminal widzi <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">make</code> dopisany
-                do PATH przez winget.
-              </p>
-            </div>
+          <Step number={4} title="Zainstaluj narzędzia systemowe">
+            <p>W oknie Ubuntu wpisz:</p>
+            <CodeBlock>sudo apt update && sudo apt install -y git make openssl</CodeBlock>
+            <p className="mt-2">
+              Od tego momentu instalacja przebiega dokładnie tak, jak na Linuksie — bo to
+              jest Linux.
+            </p>
           </Step>
 
-          <CloneAndRun stepStart={4} />
+          <CloneAndRun stepStart={5} variant="wsl" />
+
+          <details className="mt-8 rounded-lg border border-border bg-card p-4">
+            <summary className="cursor-pointer text-sm font-semibold">
+              Wolę zostać po stronie Windows — instalacja przez Git Bash
+            </summary>
+            <div className="mt-4">
+              <p className="mb-6 text-sm text-muted-foreground">
+                Ta ścieżka nie omija WSL2 — Docker Desktop wymaga go tak czy inaczej, więc
+                krok 1 powyżej wykonaj również tutaj. Różnica polega na tym, że{" "}
+                <code className="bg-muted px-1.5 py-0.5 rounded text-xs">make</code> uruchamiasz
+                w Git Bashu po stronie Windows, a nie w Ubuntu. Wymaga to doinstalowania GNU
+                Make i pilnowania kilku windowsowych wyjątków.
+              </p>
+
+              <Step number={1} title="Zainstaluj komplet narzędzi jedną komendą">
+                <p>
+                  Otwórz <strong>PowerShell</strong> — naciśnij klawisz Windows, zacznij pisać{" "}
+                  <strong>powershell</strong> i kliknij aplikację <strong>Windows PowerShell</strong>:
+                </p>
+                <AppShortcut src="/powershell-icon.png" label="Windows PowerShell" />
+                <p className="mt-3">W otwartym oknie wklej poniższe komendy:</p>
+                <CodeBlock>{"winget install -e --id Git.Git --source winget\nwinget install -e --id Docker.DockerDesktop --source winget\nwinget install -e --id ezwinports.make --source winget"}</CodeBlock>
+                <p className="mt-2">
+                  To komplet potrzebnych narzędzi:{" "}
+                  <Link
+                    href="https://gitforwindows.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    Git for Windows
+                  </Link>
+                  {" "}(Git Bash z narzędziami Unix — bash, grep, sed, openssl),{" "}
+                  <Link
+                    href="https://www.docker.com/products/docker-desktop/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    Docker Desktop
+                  </Link>
+                  {" "}(Docker Engine i Docker Compose) oraz{" "}
+                  <Link
+                    href="https://www.gnu.org/software/make/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    GNU Make
+                  </Link>
+                  {" "}4.4.
+                </p>
+                <div className="mt-3 bg-muted rounded-lg border border-border p-3 text-xs">
+                  <p>
+                    <code className="bg-background px-1 rounded">winget</code> jest wbudowany
+                    w Windows 11 oraz w Windows 10 od wersji 1809 (build 17763), gdzie dostarcza go
+                    „Instalator aplikacji”. Sprawdź komendą{" "}
+                    <code className="bg-background px-1 rounded">winget --version</code>; jeśli
+                    nie zadziała, zainstaluj lub zaktualizuj{" "}
+                    <Link
+                      href="https://apps.microsoft.com/detail/9nblggh4nns1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      Instalator aplikacji
+                    </Link>
+                    {" "}ze Sklepu Microsoft.
+                  </p>
+
+                  <details className="mt-3 border-t border-border pt-3">
+                    <summary className="font-semibold cursor-pointer">
+                      Nie masz wingeta? (Windows 10 starszy niż 1809, zablokowany Sklep)
+                    </summary>
+                    <div className="mt-2 space-y-2">
+                      <p>
+                        Pobierz i zainstaluj ręcznie{" "}
+                        <Link
+                          href="https://gitforwindows.org/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary underline underline-offset-4 hover:text-primary/80"
+                        >
+                          Git for Windows
+                        </Link>
+                        {" "}oraz{" "}
+                        <Link
+                          href="https://www.docker.com/products/docker-desktop/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary underline underline-offset-4 hover:text-primary/80"
+                        >
+                          Docker Desktop for Windows
+                        </Link>
+                        .
+                      </p>
+                      <p>
+                        GNU Make nie wymaga menedżera pakietów — to pojedynczy, samowystarczalny
+                        plik. Pobierz{" "}
+                        <Link
+                          href="https://downloads.sourceforge.net/project/ezwinports/make-4.4.1-without-guile-w32-bin.zip"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary underline underline-offset-4 hover:text-primary/80"
+                        >
+                          make-4.4.1-without-guile-w32-bin.zip
+                        </Link>
+                        {" "}(392 KB, projekt ezwinports — ten sam plik, który instaluje winget),
+                        rozpakuj i skopiuj{" "}
+                        <code className="bg-background px-1 rounded">{"bin\\make.exe"}</code> do{" "}
+                        <code className="bg-background px-1 rounded">{"C:\\Program Files\\Git\\usr\\bin\\"}</code>{" "}
+                        (Windows poprosi o potwierdzenie administratora). Ten katalog jest już
+                        w PATH Git Basha, a <code className="bg-background px-1 rounded">make.exe</code>{" "}
+                        importuje wyłącznie systemowe biblioteki Windows, więc wystarczy ten jeden plik.
+                      </p>
+                      <p>
+                        Jeśli i tak masz już{" "}
+                        <Link
+                          href="https://chocolatey.org/install"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary underline underline-offset-4 hover:text-primary/80"
+                        >
+                          Chocolatey
+                        </Link>
+                        {" "}albo{" "}
+                        <Link
+                          href="https://scoop.sh/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary underline underline-offset-4 hover:text-primary/80"
+                        >
+                          Scoopa
+                        </Link>
+                        {" "}— wystarczy <code className="bg-background px-1 rounded">choco install make</code>{" "}
+                        (PowerShell jako Administrator) lub{" "}
+                        <code className="bg-background px-1 rounded">scoop install make</code>.
+                      </p>
+                    </div>
+                  </details>
+                </div>
+              </Step>
+
+              <Step number={2} title="Uruchom Docker Desktop">
+                <p>
+                  Uruchom go z menu Start i poczekaj, aż ikona wieloryba w zasobniku systemowym
+                  przestanie się animować. Przy pierwszym uruchomieniu Docker sam sprawdzi WSL2
+                  i — jeśli nie był jeszcze włączony — dokończy jego konfigurację, prosząc
+                  o restart komputera.
+                </p>
+              </Step>
+
+              <Step number={3} title="Otwórz nowe okno Git Bash">
+                <p>
+                  Kliknij w pasek wyszukiwania obok przycisku Start (albo naciśnij klawisz
+                  Windows), wpisz <strong>git bash</strong>, a następnie kliknij aplikację{" "}
+                  <strong>Git Bash</strong> — poznasz ją po kolorowym rombie:
+                </p>
+                <AppShortcut src="/git-bash-icon.png" label="Git Bash" />
+                <div className="mt-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
+                  <p className="text-amber-800 dark:text-amber-200 font-medium text-xs">
+                    Ważne: wszystkie komendy <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">make</code> uruchamiaj
+                    w <strong>Git Bash</strong>, nie w CMD ani PowerShell. Otwórz świeże okno —
+                    dopiero nowy terminal widzi <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">make</code> dopisany
+                    do PATH przez winget.
+                  </p>
+                </div>
+              </Step>
+
+              <CloneAndRun stepStart={4} variant="desktop" />
+            </div>
+          </details>
+
         </TabsContent>
       </Tabs>
     </div>
