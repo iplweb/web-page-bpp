@@ -214,75 +214,110 @@ export function InstallationTabs() {
         </TabsContent>
 
         <TabsContent value="windows" className="mt-4">
-          <Step number={1} title="Zainstaluj Git for Windows">
+          <Step number={1} title="Zainstaluj komplet narzędzi jedną komendą">
             <p>
-              Pobierz i zainstaluj{" "}
-              <Link
-                href="https://gitforwindows.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline underline-offset-4 hover:text-primary/80"
-              >
-                Git for Windows
-              </Link>
-              {" "}— dostarcza Git Bash z narzędziami Unix (bash, grep, sed, openssl).
+              Otwórz <strong>PowerShell</strong> (zwykły — instalator Dockera sam poprosi
+              o uprawnienia administratora) i wklej:
             </p>
-          </Step>
-
-          <Step number={2} title="Zainstaluj Docker Desktop">
-            <p>
-              Pobierz i zainstaluj{" "}
-              <Link
-                href="https://docs.docker.com/desktop/install/windows-install/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline underline-offset-4 hover:text-primary/80"
-              >
-                Docker Desktop for Windows
-              </Link>
-              {" "}— zawiera Docker Engine i Docker Compose.
-            </p>
-          </Step>
-
-          <Step number={3} title="Zainstaluj GNU Make">
-            <p>
-              Najprościej przez{" "}
-              <Link
-                href="https://chocolatey.org/install"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline underline-offset-4 hover:text-primary/80"
-              >
-                Chocolatey
-              </Link>
-              :
-            </p>
-            <CodeBlock>choco install make</CodeBlock>
+            <CodeBlock>{"winget install -e --id Git.Git\nwinget install -e --id Docker.DockerDesktop\nwinget install -e --id ezwinports.make"}</CodeBlock>
             <p className="mt-2">
-              lub przez{" "}
-              <Link
-                href="https://scoop.sh/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline underline-offset-4 hover:text-primary/80"
-              >
-                Scoop
-              </Link>
-              :
+              To komplet potrzebnych narzędzi: <strong>Git for Windows</strong> (Git Bash
+              z narzędziami Unix — bash, grep, sed, openssl, envsubst),{" "}
+              <strong>Docker Desktop</strong> (Docker Engine i Docker Compose) oraz{" "}
+              <strong>GNU Make</strong> 4.4. Nie musisz instalować Chocolatey ani Scoopa.
             </p>
-            <CodeBlock>scoop install make</CodeBlock>
-          </Step>
-
-          <Step number={4} title="Używaj Git Bash">
-            <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
-              <p className="text-amber-800 dark:text-amber-200 font-medium text-xs">
-                Ważne: wszystkie komendy <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">make</code> uruchamiaj
-                w <strong>Git Bash</strong>, nie w CMD ani PowerShell.
+            <div className="mt-3 bg-muted rounded-lg border border-border p-3">
+              <p className="text-xs">
+                <code className="bg-background px-1 rounded">winget</code> jest wbudowany
+                w Windows 11 oraz w Windows 10 od wersji 1809 (build 17763), gdzie dostarcza go
+                „Instalator aplikacji”. Sprawdź komendą{" "}
+                <code className="bg-background px-1 rounded">winget --version</code>; jeśli
+                nie zadziała, zainstaluj lub zaktualizuj{" "}
+                <Link
+                  href="https://apps.microsoft.com/detail/9nblggh4nns1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Instalator aplikacji
+                </Link>
+                {" "}ze Sklepu Microsoft.
               </p>
             </div>
           </Step>
 
-          <CloneAndRun stepStart={5} />
+          <Step number={2} title="Uruchom Docker Desktop">
+            <p>
+              Uruchom go z menu Start i poczekaj, aż ikona wieloryba w zasobniku systemowym
+              przestanie się animować. Pierwsze uruchomienie może włączyć WSL2 i poprosić
+              o restart komputera.
+            </p>
+          </Step>
+
+          <Step number={3} title="Otwórz nowe okno Git Bash">
+            <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
+              <p className="text-amber-800 dark:text-amber-200 font-medium text-xs">
+                Ważne: wszystkie komendy <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">make</code> uruchamiaj
+                w <strong>Git Bash</strong>, nie w CMD ani PowerShell. Otwórz świeże okno —
+                dopiero nowy terminal widzi <code className="bg-amber-100 dark:bg-amber-900 px-1 rounded">make</code> dopisany
+                do PATH przez winget.
+              </p>
+            </div>
+          </Step>
+
+          <CloneAndRun stepStart={4} />
+
+          <details className="mt-8 rounded-lg border border-border bg-card p-4">
+            <summary className="text-sm font-semibold cursor-pointer">
+              Nie masz winget? (Windows 10 starszy niż 1809, zablokowany Sklep)
+            </summary>
+            <div className="mt-3 text-sm text-muted-foreground">
+              <p>
+                Pobierz i zainstaluj ręcznie{" "}
+                <Link
+                  href="https://gitforwindows.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Git for Windows
+                </Link>
+                {" "}oraz{" "}
+                <Link
+                  href="https://docs.docker.com/desktop/install/windows-install/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Docker Desktop for Windows
+                </Link>
+                , a GNU Make zainstaluj w PowerShellu jako Administrator przez{" "}
+                <Link
+                  href="https://chocolatey.org/install"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Chocolatey
+                </Link>
+                :
+              </p>
+              <CodeBlock>choco install make</CodeBlock>
+              <p className="mt-2">
+                lub przez{" "}
+                <Link
+                  href="https://scoop.sh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline underline-offset-4 hover:text-primary/80"
+                >
+                  Scoop
+                </Link>
+                :
+              </p>
+              <CodeBlock>scoop install make</CodeBlock>
+            </div>
+          </details>
         </TabsContent>
       </Tabs>
     </div>
