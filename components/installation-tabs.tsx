@@ -263,12 +263,8 @@ export function InstallationTabs() {
           <div className="mb-6 rounded-lg border border-primary/30 bg-primary/5 p-4 text-sm">
             <p className="font-semibold text-foreground">Najprościej: przez WSL2</p>
             <p className="mt-1 text-muted-foreground">
-              WSL2 to wbudowany w Windows podsystem Linuksa. Docker Desktop i tak z niego
-              korzysta, więc nic dodatkowego nie instalujesz — a pracując po stronie Ubuntu
-              omijasz wszystkie windowsowe wyjątki: doinstalowywanie GNU Make, przeliczanie
-              ścieżek <code className="bg-muted px-1.5 py-0.5 rounded text-xs">C:\dane</code> →{" "}
-              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">/c/dane</code> i pilnowanie,
-              w którym terminalu uruchamiasz <code className="bg-muted px-1.5 py-0.5 rounded text-xs">make</code>.
+              WSL2 to wbudowany w Windows podsystem Linuksa. Aby uruchomić BPP na Windows,
+              potrzebujesz zainstalować Docker Desktop, który i tak z niego korzysta.
             </p>
           </div>
 
@@ -383,11 +379,10 @@ export function InstallationTabs() {
             </summary>
             <div className="mt-4">
               <p className="mb-6 text-sm text-muted-foreground">
-                Ta ścieżka nie omija WSL2 — Docker Desktop wymaga go tak czy inaczej, więc
+                Ta ścieżka też wymaga WSL2 — Docker Desktop bez niego nie działa, więc
                 krok 1 powyżej wykonaj również tutaj. Różnica polega na tym, że{" "}
                 <code className="bg-muted px-1.5 py-0.5 rounded text-xs">make</code> uruchamiasz
-                w Git Bashu po stronie Windows, a nie w Ubuntu. Wymaga to doinstalowania GNU
-                Make i pilnowania kilku windowsowych wyjątków.
+                w Git Bashu po stronie Windows, a nie w Ubuntu.
               </p>
 
               <Step number={1} title="Zainstaluj komplet narzędzi jedną komendą">
