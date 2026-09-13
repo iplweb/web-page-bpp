@@ -34,8 +34,7 @@ import {
   Copy,
   Globe,
   ArrowDown,
-  History,
-  Rocket,
+  Network,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -103,22 +102,16 @@ const skillPoints = [
 
 const bppMcpPoints = [
   {
-    icon: History,
-    title: "Instalacja bez adresu /mcp",
-    description:
-      "Wasza wersja BPP nie ma jeszcze wbudowanego serwera MCP. BPP-MCP łączy się z bibliografią przez jej API, więc zadziała także tam.",
-  },
-  {
-    icon: Rocket,
-    title: "Najnowsze funkcje od razu",
-    description:
-      "Nowe narzędzia trafiają najpierw do BPP-MCP, a do serwera wbudowanego w BPP — z kolejnym wydaniem systemu. Kto potrzebuje ich już dziś, instaluje BPP-MCP.",
-  },
-  {
     icon: Terminal,
-    title: "Narzędzie bez zdalnego MCP",
+    title: "Działa na Twoim komputerze",
     description:
-      "Część programów uruchamia serwery MCP wyłącznie lokalnie (stdio). BPP-MCP działa właśnie tak — dodajesz go do klienta jednym poleceniem.",
+      "BPP-MCP to lokalny serwer MCP (stdio) z tym samym zestawem narzędzi co adres /mcp. Dodajesz go do asystenta jednym poleceniem, a ten uruchamia go u siebie.",
+  },
+  {
+    icon: Network,
+    title: "Wymaga dostępu do serwera BPP",
+    description:
+      "BPP-MCP łączy się z bibliografią przez jej API, więc komputer musi widzieć serwer BPP — w sieci uczelni lub przez VPN.",
   },
 ]
 
@@ -415,6 +408,19 @@ export default function BppAiPage() {
                 musi być dostępna z internetu.
               </p>
             </div>
+
+            <div className="mt-8 max-w-3xl mx-auto rounded-lg border border-primary/30 bg-primary/5 p-5 flex gap-4">
+              <Network className="h-6 w-6 text-primary shrink-0 mt-0.5" />
+              <p className="text-sm text-muted-foreground text-pretty">
+                <strong className="text-foreground">Wasz serwer BPP jest tylko w intranecie?</strong> Część uczelni
+                nie udostępnia bibliografii publicznie. W takim przypadku konieczne jest
+                uruchomienie lokalnie pakietu{" "}
+                <Link href="#bpp-mcp" className="font-medium text-primary underline underline-offset-4">
+                  BPP-MCP
+                </Link>{" "}
+                — na komputerze, który ma dostęp do serwera BPP (w sieci uczelni lub przez VPN).
+              </p>
+            </div>
           </div>
         </section>
 
@@ -535,17 +541,17 @@ export default function BppAiPage() {
         </section>
 
         {/* BPP-MCP — samodzielny serwer */}
-        <section className="px-4 py-12">
+        <section id="bpp-mcp" className="scroll-mt-20 px-4 py-12">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-3">BPP-MCP — gdy adresu /mcp jeszcze nie ma</h2>
+              <h2 className="text-3xl font-bold mb-3">BPP-MCP — gdy serwer BPP jest tylko w intranecie</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-                Ten sam zestaw narzędzi jako osobny program, uruchamiany na Twoim komputerze. Łączy się z Waszą
-                bibliografią przez API, a z asystentem rozmawia lokalnie.
+                Część uczelni nie udostępnia serwera BPP publicznie. W takim przypadku konieczne jest uruchomienie
+                lokalnie pakietu BPP-MCP.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-stagger">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto animate-stagger">
               {bppMcpPoints.map((point) => (
                 <Card key={point.title} className="card-hover">
                   <CardHeader>
@@ -613,8 +619,7 @@ export default function BppAiPage() {
           <div className="container mx-auto text-center animate-fade-in">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Chcecie to przetestować?</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-pretty">
-              Sprawdzimy, czy Wasza instalacja ma już adres /mcp, pomożemy podłączyć asystenta i zadać mu pierwsze
-              pytania. Chętnie też posłuchamy, jakich analiz szukacie — to one wyznaczają kierunek dalszego rozwoju.
+              Pomożemy podłączyć asystenta do Waszej bibliografii i zadać mu pierwsze pytania. Chętnie też posłuchamy, jakich analiz szukacie — to one wyznaczają kierunek dalszego rozwoju.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
