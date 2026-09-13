@@ -27,7 +27,6 @@ import {
   Table2,
   Github,
   Calendar,
-  AlertTriangle,
   Compass,
   Gauge,
   LineChart,
@@ -605,21 +604,6 @@ export default function BppAiPage() {
                   Zobacz umiejętności BPP
                 </Link>
               </Button>
-            </div>
-
-            <div className="mt-10 rounded-lg border border-amber-300/60 bg-amber-50/60 p-5 text-sm text-pretty">
-              <div className="flex gap-3">
-                <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" aria-hidden="true" />
-                <div>
-                  <p className="font-semibold mb-1">Oprogramowanie świeże i dynamicznie rozwijane</p>
-                  <p className="text-muted-foreground">
-                    Serwer MCP wbudowany w BPP, BPP-MCP oraz umiejętności BPP powstały niedawno i w nadchodzących
-                    tygodniach mogą podlegać znacznym zmianom. BPP-MCP i umiejętności testowane były jak dotąd na
-                    macOS — na pozostałych systemach operacyjnych liczcie się z drobnymi niespodziankami. Wszystkie
-                    projekty są dostępne na licencji MIT.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
