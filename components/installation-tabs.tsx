@@ -171,7 +171,12 @@ export function InstallationTabs() {
   const [activeTab, setActiveTab] = useState("linux")
 
   useEffect(() => {
-    setActiveTab(detectOS())
+    const os = new URLSearchParams(window.location.search).get("os")
+    if (os === "windows" || os === "macos" || os === "linux") {
+      setActiveTab(os)
+    } else {
+      setActiveTab(detectOS())
+    }
   }, [])
 
   return (
@@ -242,7 +247,7 @@ export function InstallationTabs() {
               >
                 Ubuntu
               </Link>
-              {" "}lub{" "}
+              ,{" "}
               <Link
                 href="https://docs.docker.com/engine/install/debian/"
                 target="_blank"
@@ -251,9 +256,17 @@ export function InstallationTabs() {
               >
                 Debian
               </Link>
-              . Alternatywnie, po sklonowaniu repozytorium możesz użyć:
+              {" "}lub{" "}
+              <Link
+                href="https://docs.docker.com/engine/install/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4 hover:text-primary/80"
+              >
+                innych dystrybucji
+              </Link>
+              .
             </p>
-            <CodeBlock>make install-docker</CodeBlock>
           </Step>
 
           <CloneAndRun stepStart={3} />
@@ -261,117 +274,164 @@ export function InstallationTabs() {
 
         <TabsContent value="windows" className="mt-4">
           <div className="mb-6 rounded-lg border border-primary/30 bg-primary/5 p-4 text-sm">
-            <p className="font-semibold text-foreground">Najprościej: przez WSL2</p>
+            <p className="font-semibold text-foreground">Najprościej: gotowy instalator BPP dla Windows</p>
             <p className="mt-1 text-muted-foreground">
-              WSL2 to wbudowany w Windows podsystem Linuksa. Aby uruchomić BPP na Windows,
-              potrzebujesz zainstalować Docker Desktop, który i tak z niego korzysta.
-            </p>
-          </div>
-
-          <Step number={1} title="Włącz WSL2 (Windows Subsystem for Linux)">
-            <p>
-              Kliknij prawym przyciskiem na przycisk Start, wybierz{" "}
-              <strong>Terminal (Administrator)</strong> (na Windows 10:{" "}
-              <strong>Windows PowerShell (Administrator)</strong>) i wpisz:
-            </p>
-            <CodeBlock>wsl --install</CodeBlock>
-            <p className="mt-2">
-              Komenda włącza{" "}
+              Pobierz mały plik{" "}
               <Link
-                href="https://learn.microsoft.com/pl-pl/windows/wsl/install"
+                href="https://github.com/iplweb/bpp-wsl/releases/download/v0.3.1/BPP-Setup-0.3.1.exe"
+                className="text-primary underline underline-offset-4 hover:text-primary/80 font-medium"
+              >
+                BPP-Setup-0.3.1.exe
+              </Link>{" "}
+              (43 KB) z wydania{" "}
+              <Link
+                href="https://github.com/iplweb/bpp-wsl/releases/tag/v0.3.1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4 hover:text-primary/80"
               >
-                WSL2
+                BPP dla Windows 0.3.1
+              </Link>{" "}
+              w repozytorium{" "}
+              <Link
+                href="https://github.com/iplweb/bpp-wsl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4 hover:text-primary/80"
+              >
+                iplweb/bpp-wsl
+              </Link>{" "}
+              i uruchom dwuklikiem — instalator sam pobierze pozostałe komponenty i uruchomi BPP.
+              Instrukcja krok po kroku jest w{" "}
+              <Link
+                href="https://github.com/iplweb/bpp-wsl#instalacja-krok-po-kroku"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline underline-offset-4 hover:text-primary/80"
+              >
+                README
               </Link>
-              {" "}i instaluje dystrybucję Ubuntu, po czym prosi o restart komputera. Jeśli WSL
-              jest już włączony, nic nie zepsuje — po prostu to zgłosi (stan sprawdzisz też
-              przez <code className="bg-muted px-1.5 py-0.5 rounded text-xs">wsl --status</code>).
+              . Plik nie jest podpisany, więc Windows SmartScreen pokaże ostrzeżenie — kliknij{" "}
+              <strong>Więcej informacji → Uruchom mimo to</strong>.
             </p>
-            <div className="mt-3 bg-muted rounded-lg border border-border p-3 text-xs">
-              <p>
-                Wymagany jest Windows 11 albo Windows 10 w wersji 2004 (build 19041) lub
-                nowszej, z włączoną wirtualizacją w BIOS/UEFI — dokładnie te same wymagania,
-                co Docker Desktop. Na starszych wydaniach WSL2 trzeba doinstalować{" "}
-                <Link
-                  href="https://learn.microsoft.com/pl-pl/windows/wsl/install-manual"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  ręcznie
-                </Link>
-                .
-              </p>
+          </div>
+
+          <details className="rounded-lg border border-border bg-card p-4">
+            <summary className="cursor-pointer text-sm">
+              <span className="font-semibold text-foreground">Alternatywnie: ręcznie przez WSL2</span>
+              <span className="mt-1 block text-muted-foreground">
+                WSL2 to wbudowany w Windows podsystem Linuksa. Aby uruchomić BPP na Windows,
+                potrzebujesz zainstalować Docker Desktop, który i tak z niego korzysta —
+                rozwiń ten panel, aby zobaczyć pełną instrukcję krok po kroku.
+              </span>
+            </summary>
+            <div className="mt-4">
+              <Step number={1} title="Włącz WSL2 (Windows Subsystem for Linux)">
+                <p>
+                  Kliknij prawym przyciskiem na przycisk Start, wybierz{" "}
+                  <strong>Terminal (Administrator)</strong> (na Windows 10:{" "}
+                  <strong>Windows PowerShell (Administrator)</strong>) i wpisz:
+                </p>
+                <CodeBlock>wsl --install</CodeBlock>
+                <p className="mt-2">
+                  Komenda włącza{" "}
+                  <Link
+                    href="https://learn.microsoft.com/pl-pl/windows/wsl/install"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline underline-offset-4 hover:text-primary/80"
+                  >
+                    WSL2
+                  </Link>
+                  {" "}i instaluje dystrybucję Ubuntu, po czym prosi o restart komputera. Jeśli WSL
+                  jest już włączony, nic nie zepsuje — po prostu to zgłosi (stan sprawdzisz też
+                  przez <code className="bg-muted px-1.5 py-0.5 rounded text-xs">wsl --status</code>).
+                </p>
+                <div className="mt-3 bg-muted rounded-lg border border-border p-3 text-xs">
+                  <p>
+                    Wymagany jest Windows 11 albo Windows 10 w wersji 2004 (build 19041) lub
+                    nowszej, z włączoną wirtualizacją w BIOS/UEFI — dokładnie te same wymagania,
+                    co Docker Desktop. Na starszych wydaniach WSL2 trzeba doinstalować{" "}
+                    <Link
+                      href="https://learn.microsoft.com/pl-pl/windows/wsl/install-manual"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      ręcznie
+                    </Link>
+                    .
+                  </p>
+                </div>
+              </Step>
+
+              <Step number={2} title="Zainstaluj Docker Desktop i połącz go z Ubuntu">
+                <p>
+                  Otwórz <strong>PowerShell</strong> — naciśnij klawisz Windows, zacznij pisać{" "}
+                  <strong>powershell</strong> i kliknij aplikację <strong>Windows PowerShell</strong>:
+                </p>
+                <AppShortcut src="/powershell-icon.png" label="Windows PowerShell" />
+                <p className="mt-3">W otwartym oknie wklej:</p>
+                <CodeBlock>winget install -e --id Docker.DockerDesktop --source winget</CodeBlock>
+                <p className="mt-2">
+                  Uruchom Docker Desktop z menu Start i poczekaj, aż ikona wieloryba w zasobniku
+                  systemowym przestanie się animować. Następnie wejdź w{" "}
+                  <strong>Settings → Resources → WSL Integration</strong> i włącz suwak przy
+                  dystrybucji <strong>Ubuntu</strong> — dzięki temu komendy{" "}
+                  <code className="bg-muted px-1.5 py-0.5 rounded text-xs">docker</code> i{" "}
+                  <code className="bg-muted px-1.5 py-0.5 rounded text-xs">docker compose</code>{" "}
+                  zadziałają wprost w Ubuntu, korzystając z tego samego silnika.
+                </p>
+                <div className="mt-3 bg-muted rounded-lg border border-border p-3 text-xs">
+                  <p>
+                    <code className="bg-background px-1 rounded">winget</code> jest wbudowany
+                    w Windows 11 oraz w Windows 10 od wersji 1809 (build 17763). Jeśli komenda
+                    nie zadziała, pobierz{" "}
+                    <Link
+                      href="https://www.docker.com/products/docker-desktop/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      Docker Desktop for Windows
+                    </Link>
+                    {" "}ręcznie ze strony producenta.
+                  </p>
+                </div>
+              </Step>
+
+              <Step number={3} title="Otwórz Ubuntu">
+                <p>
+                  Kliknij w pasek wyszukiwania obok przycisku Start (albo naciśnij klawisz
+                  Windows), wpisz <strong>ubuntu</strong> i kliknij aplikację:
+                </p>
+                <AppShortcut src="/ubuntu-icon.svg" label="Ubuntu" />
+                <div className="mt-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
+                  <p className="text-amber-800 dark:text-amber-200 font-medium text-xs">
+                    Nie widzisz ikony Ubuntu? Zrestartuj komputer. Instalacja WSL2 z kroku 1
+                    kończy się dopiero po ponownym uruchomieniu systemu — wcześniej Ubuntu nie
+                    pojawi się w menu Start.
+                  </p>
+                </div>
+                <p className="mt-3">
+                  Przy pierwszym uruchomieniu Ubuntu poprosi o nazwę użytkownika i hasło — to
+                  konto wewnątrz Linuksa, niezależne od konta Windows. Hasło zapamiętaj, będzie
+                  potrzebne przy <code className="bg-muted px-1.5 py-0.5 rounded text-xs">sudo</code>.
+                </p>
+              </Step>
+
+              <Step number={4} title="Zainstaluj narzędzia systemowe">
+                <p>W oknie Ubuntu wpisz:</p>
+                <CodeBlock>sudo apt update && sudo apt install -y git make openssl</CodeBlock>
+                <p className="mt-2">
+                  Od tego momentu instalacja przebiega dokładnie tak, jak na Linuksie — bo to
+                  jest Linux.
+                </p>
+              </Step>
+
+              <CloneAndRun stepStart={5} variant="wsl" />
             </div>
-          </Step>
-
-          <Step number={2} title="Zainstaluj Docker Desktop i połącz go z Ubuntu">
-            <p>
-              Otwórz <strong>PowerShell</strong> — naciśnij klawisz Windows, zacznij pisać{" "}
-              <strong>powershell</strong> i kliknij aplikację <strong>Windows PowerShell</strong>:
-            </p>
-            <AppShortcut src="/powershell-icon.png" label="Windows PowerShell" />
-            <p className="mt-3">W otwartym oknie wklej:</p>
-            <CodeBlock>winget install -e --id Docker.DockerDesktop --source winget</CodeBlock>
-            <p className="mt-2">
-              Uruchom Docker Desktop z menu Start i poczekaj, aż ikona wieloryba w zasobniku
-              systemowym przestanie się animować. Następnie wejdź w{" "}
-              <strong>Settings → Resources → WSL Integration</strong> i włącz suwak przy
-              dystrybucji <strong>Ubuntu</strong> — dzięki temu komendy{" "}
-              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">docker</code> i{" "}
-              <code className="bg-muted px-1.5 py-0.5 rounded text-xs">docker compose</code>{" "}
-              zadziałają wprost w Ubuntu, korzystając z tego samego silnika.
-            </p>
-            <div className="mt-3 bg-muted rounded-lg border border-border p-3 text-xs">
-              <p>
-                <code className="bg-background px-1 rounded">winget</code> jest wbudowany
-                w Windows 11 oraz w Windows 10 od wersji 1809 (build 17763). Jeśli komenda
-                nie zadziała, pobierz{" "}
-                <Link
-                  href="https://www.docker.com/products/docker-desktop/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary underline underline-offset-4 hover:text-primary/80"
-                >
-                  Docker Desktop for Windows
-                </Link>
-                {" "}ręcznie ze strony producenta.
-              </p>
-            </div>
-          </Step>
-
-          <Step number={3} title="Otwórz Ubuntu">
-            <p>
-              Kliknij w pasek wyszukiwania obok przycisku Start (albo naciśnij klawisz
-              Windows), wpisz <strong>ubuntu</strong> i kliknij aplikację:
-            </p>
-            <AppShortcut src="/ubuntu-icon.svg" label="Ubuntu" />
-            <div className="mt-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
-              <p className="text-amber-800 dark:text-amber-200 font-medium text-xs">
-                Nie widzisz ikony Ubuntu? Zrestartuj komputer. Instalacja WSL2 z kroku 1
-                kończy się dopiero po ponownym uruchomieniu systemu — wcześniej Ubuntu nie
-                pojawi się w menu Start.
-              </p>
-            </div>
-            <p className="mt-3">
-              Przy pierwszym uruchomieniu Ubuntu poprosi o nazwę użytkownika i hasło — to
-              konto wewnątrz Linuksa, niezależne od konta Windows. Hasło zapamiętaj, będzie
-              potrzebne przy <code className="bg-muted px-1.5 py-0.5 rounded text-xs">sudo</code>.
-            </p>
-          </Step>
-
-          <Step number={4} title="Zainstaluj narzędzia systemowe">
-            <p>W oknie Ubuntu wpisz:</p>
-            <CodeBlock>sudo apt update && sudo apt install -y git make openssl</CodeBlock>
-            <p className="mt-2">
-              Od tego momentu instalacja przebiega dokładnie tak, jak na Linuksie — bo to
-              jest Linux.
-            </p>
-          </Step>
-
-          <CloneAndRun stepStart={5} variant="wsl" />
+          </details>
 
           <details className="mt-8 rounded-lg border border-border bg-card p-4">
             <summary className="cursor-pointer text-sm font-semibold">
@@ -380,7 +440,8 @@ export function InstallationTabs() {
             <div className="mt-4">
               <p className="mb-6 text-sm text-muted-foreground">
                 Ta ścieżka też wymaga WSL2 — Docker Desktop bez niego nie działa, więc
-                krok 1 powyżej wykonaj również tutaj. Różnica polega na tym, że{" "}
+                wykonaj również krok 1 (Włącz WSL2) z instrukcji w panelu powyżej.
+                Różnica polega na tym, że{" "}
                 <code className="bg-muted px-1.5 py-0.5 rounded text-xs">make</code> uruchamiasz
                 w Git Bashu po stronie Windows, a nie w Ubuntu.
               </p>

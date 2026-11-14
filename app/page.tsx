@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { BookOpen, Users, BarChart3, Download, Upload, Network, Award, Globe, Shield, Calendar, Sparkles, ArrowRight, Search, Unlock } from "lucide-react"
+import { BookOpen, Users, BarChart3, Download, Upload, Network, Award, Globe, Shield, Calendar, Sparkles, ArrowRight, Search, Unlock, MonitorDown } from "lucide-react"
 import Image from "next/image"
 
 // Rok rozpoczęcia prac nad BPP — staż systemu liczymy dynamicznie, żeby nie trzeba
@@ -80,6 +80,37 @@ export default function HomePage() {
                   </div>
                   <span className="inline-flex shrink-0 items-center self-start rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-transform group-hover:scale-[1.03] sm:self-auto">
                     Poznaj BPP-AI
+                    <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </div>
+            </Link>
+            <Link
+              href="/zrodla?os=windows"
+              className="group block animate-fade-in"
+              style={{ animationDelay: "0.2s" }}
+            >
+              <div className="relative overflow-hidden rounded-2xl border-2 border-orange-300/70 bg-gradient-to-r from-orange-400/50 via-orange-300/30 to-transparent px-6 py-5 shadow-sm transition-all hover:border-orange-400/80 hover:shadow-md sm:px-8 sm:py-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-start gap-4 sm:items-center">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                      <MonitorDown className="h-6 w-6" />
+                    </span>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h2 className="text-xl font-bold sm:text-2xl">
+                          Gotowy instalator BPP dla <span className="text-primary">Windows</span>
+                        </h2>
+                        <Badge variant="secondary">nowość</Badge>
+                      </div>
+                      <p className="mt-1 text-sm text-muted-foreground text-pretty sm:text-base">
+                        Pobierz mały plik BPP-Setup i uruchom dwuklikiem — instalator sam pobierze
+                        i skonfiguruje wszystkie komponenty systemu.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="inline-flex shrink-0 items-center self-start rounded-full bg-primary px-5 py-2.5 font-medium text-primary-foreground transition-transform group-hover:scale-[1.03] sm:self-auto">
+                    Zobacz instrukcję
                     <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </div>
