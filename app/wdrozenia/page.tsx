@@ -36,7 +36,7 @@ export default function WdrozeniaPage() {
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-sm">
                     <Image
-                      src="/images/logo-umlub-official.png"
+                      src="/images/logo-umlub-official.webp"
                       alt="Logo Uniwersytet Medyczny w Lublinie"
                       width={60}
                       height={60}
@@ -84,7 +84,7 @@ export default function WdrozeniaPage() {
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-sm">
                     <Image
-                      src="/images/logo-up-official.png"
+                      src="/images/logo-up-official.webp"
                       alt="Logo Uniwersytet Przyrodniczy w Lublinie"
                       width={60}
                       height={60}
@@ -132,7 +132,7 @@ export default function WdrozeniaPage() {
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-sm">
                     <Image
-                      src="/images/logo-apoz-official.png"
+                      src="/images/logo-apoz-official.webp"
                       alt="Logo Akademia Pożarnicza"
                       width={60}
                       height={60}
@@ -180,7 +180,7 @@ export default function WdrozeniaPage() {
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-16 h-16 bg-white rounded-lg p-2 shadow-sm">
                     <Image
-                      src="/images/logo-piwet-official.png"
+                      src="/images/logo-piwet-official.webp"
                       alt="Logo Państwowy Instytut Weterynaryjny - PIB"
                       width={60}
                       height={60}

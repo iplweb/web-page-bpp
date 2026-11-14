@@ -16,7 +16,7 @@ export function InstallerScreenshot() {
         className="block w-full cursor-zoom-in overflow-hidden rounded-lg border shadow-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
       >
         <Image
-          src="/images/bpp-windows-installer.png"
+          src="/images/bpp-windows-installer.webp"
           alt="Gotowa instalacja BPP w Windows — okno instalatora i uruchomiony system w przeglądarce"
           width={1996}
           height={1248}
@@ -43,7 +43,7 @@ export function InstallerScreenshot() {
         </button>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/bpp-windows-installer.png"
+          src="/images/bpp-windows-installer.webp"
           alt="Gotowa instalacja BPP w Windows"
           className="block max-h-[95vh] max-w-[95vw] cursor-zoom-out object-contain"
         />

@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Image
-              src="/images/logo-bpp.png"
+              src="/images/logo-bpp.webp"
               alt="Bibliografia Publikacji Pracowników"
               width={200}
               height={40}
@@ -80,7 +80,7 @@ export function Footer() {
             <div className="space-y-4">
               <Link href="https://www.iplweb.pl/" target="_blank" rel="noopener noreferrer">
                 <Image
-                  src="/images/logo-iplweb.png"
+                  src="/images/logo-iplweb.webp"
                   alt="IPLWeb - oddychamy internetem"
                   width={150}
                   height={30}

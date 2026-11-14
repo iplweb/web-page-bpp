@@ -6,9 +6,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  images: {
-    unoptimized: true,
-  },
+  // Next.js Image Optimization działa na Vercel / serwerze Node.
+  // W razie przejścia na statyczny eksport (`output: 'export'`) trzeba
+  // przywrócić `images: { unoptimized: true }`.
 }
 
 export default nextConfig

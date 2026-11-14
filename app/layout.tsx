@@ -4,8 +4,6 @@ import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/react"
 import Script from "next/script"
-import { Suspense } from "react"
-import { Preloader } from "@/components/preloader"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -50,10 +48,8 @@ export default function RootLayout({
         />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
-        <Preloader>
-          <Suspense fallback={null}>{children}</Suspense>
-          <Analytics />
-        </Preloader>
+        {children}
+        <Analytics />
       </body>
     </html>
   )

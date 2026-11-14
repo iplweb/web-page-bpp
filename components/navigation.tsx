@@ -67,7 +67,7 @@ export function Navigation() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 no-animation">
             <Image
-              src="/images/logo-bpp.png"
+              src="/images/logo-bpp.webp"
               alt="Bibliografia Publikacji Pracowników"
               width={200}
               height={40}

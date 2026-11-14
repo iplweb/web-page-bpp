@@ -41,7 +41,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="hover:opacity-80 transition-opacity"
                   >
-                    <Image src="/images/logo-iplweb.png" alt="IPLWeb" width={160} height={32} className="h-8 w-auto" />
+                    <Image src="/images/logo-iplweb.webp" alt="IPLWeb" width={160} height={32} className="h-8 w-auto" />
                   </Link>
                 </div>
                 <Link
