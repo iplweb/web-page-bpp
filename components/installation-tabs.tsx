@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Copy, Check } from "lucide-react"
 import Link from "next/link"
+import { InstallerScreenshot } from "@/components/installer-screenshot"
 
 function AppleLogo({ className }: { className?: string }) {
   return (
@@ -314,6 +315,7 @@ export function InstallationTabs() {
               . Plik nie jest podpisany, więc Windows SmartScreen pokaże ostrzeżenie — kliknij{" "}
               <strong>Więcej informacji → Uruchom mimo to</strong>.
             </p>
+            <InstallerScreenshot />
           </div>
 
           <details className="rounded-lg border border-border bg-card p-4">
