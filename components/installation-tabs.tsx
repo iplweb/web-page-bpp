@@ -435,7 +435,7 @@ export function InstallationTabs() {
 
           <details className="mt-8 rounded-lg border border-border bg-card p-4">
             <summary className="cursor-pointer text-sm font-semibold">
-              Wolę zostać po stronie Windows — instalacja przez Git Bash
+              Instalacja przez Git Bash
             </summary>
             <div className="mt-4">
               <p className="mb-6 text-sm text-muted-foreground">
