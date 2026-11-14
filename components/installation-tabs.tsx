@@ -279,19 +279,19 @@ export function InstallationTabs() {
             <p className="mt-1 text-muted-foreground">
               Pobierz mały plik{" "}
               <Link
-                href="https://github.com/iplweb/bpp-wsl/releases/download/v0.3.1/BPP-Setup-0.3.1.exe"
+                href="https://github.com/iplweb/bpp-wsl/releases/download/v0.3.2/BPP-Setup-0.3.2.exe"
                 className="text-primary underline underline-offset-4 hover:text-primary/80 font-medium"
               >
-                BPP-Setup-0.3.1.exe
+                BPP-Setup-0.3.2.exe
               </Link>{" "}
               (43 KB) z wydania{" "}
               <Link
-                href="https://github.com/iplweb/bpp-wsl/releases/tag/v0.3.1"
+                href="https://github.com/iplweb/bpp-wsl/releases/tag/v0.3.2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline underline-offset-4 hover:text-primary/80"
               >
-                BPP dla Windows 0.3.1
+                BPP dla Windows 0.3.2
               </Link>{" "}
               w repozytorium{" "}
               <Link
