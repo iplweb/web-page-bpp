@@ -450,7 +450,7 @@ export default function BppAiPage() {
         </section>
 
         {/* Przykład */}
-        <section className="px-4 py-12 bg-muted/20">
+        <section id="przyklady" className="scroll-mt-20 px-4 py-12 bg-muted/20">
           <div className="container mx-auto max-w-4xl">
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold mb-3">Przykładowe zapytania</h2>
